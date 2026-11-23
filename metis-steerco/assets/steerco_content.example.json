@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "label": "SteerCo Update",
+    "project_title": "Product Operating Model Transformation",
+    "date": "July 14th, 2026",
+    "closing": "Thank You!",
+    "output": "SteerCo_Example.pptx"
+  },
+
+  "anchor": {
+    "title": "The Pilot Is On Track to Launch, With Three Decisions Needed From You",
+    "subtitle": "Advancing from operating model design to pilot operationalization, targeting a July 21 launch",
+    "achieved": [
+      "Published role definitions and \"what good looks like\" cards for the five pilot teams",
+      "Surfaced and mapped the cross-pod dependencies that gate launch",
+      "Engaged key SMEs and drafted the comms and change plan",
+      "Stood up the proposed Connectivity value stream team structure"
+    ],
+    "in_progress": [
+      "Sequencing funding, architecture, and role definitions into the right order",
+      "Running the Jira backlog review and applying a Definition of Ready",
+      "Finalizing workforce assignments and assessing initiative-level impacts",
+      "Planning training, job aids, and the ~2-week ramp"
+    ],
+    "next": [
+      "Endorse the five-team pilot staffing approach and accepted re-sequencing",
+      "Approve an interim value stream funding approach",
+      "Align functional leaders on resource transitions and release timing",
+      "Confirm which in-flight initiatives absorb reduced capacity"
+    ],
+    "takeaway": "The pilot can launch on July 21 if leadership endorses staffing, funding, and resource transitions now."
+  },
+
+  "risks": {
+    "title": "Risks & Tradeoffs Requiring Leadership Support",
+    "subtitle": "Timeline assumes near-perfect execution; here are the gaps and what is being done to address them",
+    "rows": [
+      {
+        "working_through": "Cross-pod dependencies must be sequenced right: Funding & Metrics, Architecture/tech setup, and Role definitions must land in order.",
+        "doing_done": "Surfaced and mapped initial dependencies; continuing to sequence them as pods document roadmaps.",
+        "needed": "Endorse phased approach and accept imperfection and delay as cost of learning.",
+        "implication": "Operationalization will continue to flex as the pilot proves out the sequence."
+      },
+      {
+        "working_through": "Change absorption: a natural \"slow before speed up\" period as teams internalize the change.",
+        "doing_done": "Published role definitions and cards, drafted comms/change plan; planning training, job aids, and a ~2-week ramp with weekly Q&A.",
+        "needed": "Air cover through the slow-down period and backing to fund coaching and job aids.",
+        "implication": "Teams operationalize before they are ready and adoption stalls."
+      },
+      {
+        "working_through": "Single-SME reliance: critical knowledge sits with limited individuals with competing priorities.",
+        "doing_done": "Engaged the key SMEs; continuing to work with them async to hold momentum.",
+        "needed": "Protected time for key SMEs against BAU and acknowledgement of slowed current work.",
+        "implication": "A single unavailable SME can move the critical path."
+      },
+      {
+        "working_through": "Backlog readiness for the first PI: the initial ART backlog is not yet refined into PI-ready Features.",
+        "doing_done": "Running the Jira backlog review; applying a Definition of Ready to refine work into PI-ready Features ahead of planning.",
+        "needed": "Backing to protect refinement time before PI Planning.",
+        "implication": "PI Planning becomes a refinement exercise rather than a planning event."
+      }
+    ]
+  },
+
+  "decisions": {
+    "title": "Leadership Decisions Needed For Pilot Effectiveness",
+    "subtitle": "Each key risk resolves to a specific ask or decision leadership must make to maximize pilot effectiveness",
+    "rows": [
+      {
+        "risk": "Dedicated pilot capacity cannot be protected. Launching the five-team Connectivity pilot requires reallocating existing resources from active initiatives.",
+        "ask": "Endorse the proposed five-team pilot staffing approach and accept that selected in-flight initiatives may be re-sequenced or deferred while the pilot is validated."
+      },
+      {
+        "risk": "Current strategic initiatives may experience delivery impacts (e.g., Data Center Exits, Starburst & Colorless, BPI Migration).",
+        "ask": "Confirm which initiatives should absorb reduced capacity, be re-sequenced, or be deferred (initial list provided; holistic assessment underway)."
+      },
+      {
+        "risk": "The pilot requires an interim funding approach. A value stream cannot operate effectively through project-based funding alone.",
+        "ask": "Approve an interim value stream funding approach while the long-term model is finalized (with Finance, Pod E)."
+      },
+      {
+        "risk": "Workforce transitions require cross-functional alignment. Named resources span multiple organizations and people managers.",
+        "ask": "Align functional leaders on resource transitions and release timing for dedicated pilot staffing."
+      },
+      {
+        "risk": "End-to-end transformation may exceed current scope. The model primarily addresses software delivery; upstream intake and pre-ART activities require further design.",
+        "ask": "Endorse continued development of the upstream engagement model across Network A&E, upstream intake, and pre-ART activities."
+      }
+    ]
+  },
+
+  "main_tables": [
+    {
+      "title": "Protecting Pilot Capacity Creates Real Tradeoffs",
+      "subtitle": "Initial view of current initiatives that may be affected by dedicating resources to the pilot; final impacts confirmed as assignments are validated",
+      "headers": ["Current Initiative", "Potential Impact", "Current Mitigation / Next Step"],
+      "col_widths": [3.0, 5.5, 3.83],
+      "rows": [
+        ["Data Center Exits", "Apigee shutdown and mid-cutover activities require sustained delivery capacity; redirecting key resources may delay delivery and increase outage risk.", "Finalize workforce assignments and confirm delivery sequencing with functional leaders before pilot staffing is finalized."],
+        ["Starburst & Colorless", "Supports significant customer commitments with major revenue implications; redirecting engineering capacity may impact timelines and contractual commitments.", "Confirm sequencing through portfolio governance."],
+        ["BPI Migration", "Foundational to broader IT modernization; resource transitions may slow key transformation milestones.", "Assess impact as workforce mapping completes."],
+        ["Network A&E (Non-Pilot Work)", "Scarce architecture and design capacity may be redirected to the pilot, slowing lower-priority design requests across the portfolio.", "Confirm dedicated Network A&E capacity and reprioritize remaining demand through portfolio governance."]
+      ]
+    }
+  ],
+
+  "next_storyline": {
+    "date": "July 28th, 2026",
+    "headline": "The Connectivity pilot has launched and its first PI is underway, validating the operating model with early signals on delivery flow.",
+    "expected_achievements": [
+      "Five-team pilot stood up and operating with dedicated capacity",
+      "Interim value stream funding approach approved and in effect",
+      "First PI Planning completed against a PI-ready backlog"
+    ],
+    "expected_decisions": [
+      "Confirm which in-flight initiatives absorb the validated capacity impact",
+      "Endorse the upstream engagement model for Network A&E and pre-ART work"
+    ],
+    "watch_items": [
+      "Resource transitions land on time across functional leaders",
+      "Backlog reaches PI-ready before planning, not during it",
+      "Key SMEs stay protected against BAU pull"
+    ]
+  },
+
+  "appendix": [
+    {
+      "type": "bullets",
+      "title": "Pod-Level Workplan Detail",
+      "subtitle": "Next steps by pod for the week ahead",
+      "bullets": [
+        "Pod A (People & Change): socialize comms plan, finish capacity & skill-gap assessment, finalize training approach, develop manager guides.",
+        "Pod B (Strategy & Governance): finalize governance framework, PM principles, SDLC, and success metrics; assign decision rights with Pod C.",
+        "Pod C (Value Stream Design): finalize names-in-boxes, review backlog readiness, define transition into Q4 PI Planning.",
+        "Pod D (Architecture & Delivery): stand up Jira/SharePoint hierarchy, complete API and dependency mapping, define governance cadence.",
+        "Pod E (Funding & Metrics): finalize funding decisions with Finance, draft value-stream funding model, define pilot KPIs."
+      ]
+    }
+  ]
+}

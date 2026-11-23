@@ -1,0 +1,762 @@
+{
+ "output_name": "agent-office-reel",
+ "brand": {
+  "bg": "#eef2f8",
+  "text": "#141a3c",
+  "muted": "#5b6380",
+  "accent": "#256ba2",
+  "accent-light": "#256ba2",
+  "good": "#1fa898",
+  "bad": "#e5484d",
+  "glow1": "rgba(37,107,162,.10)",
+  "glow2": "rgba(59,218,192,.10)",
+  "font": "Archivo"
+ },
+ "end_hold": 1400,
+ "music": {
+  "file": "assets/rose_gold_long.mp3",
+  "lift_on": "scene:1",
+  "lift_at": 16.0,
+  "volume": 0.55
+ },
+ "vertical": {
+  "title": "I built an office\nfor my AI agents.",
+  "handle": "Metis Strategy",
+  "bg": "plain",
+  "size": 84
+ },
+ "scenes": [
+  {
+   "type": "motion",
+   "bg": "studio:#e2eaff",
+   "html": "assets/scenes/s1_inbox.html",
+   "duration": 6000,
+   "exit": {
+    "flood": "#3bdac0",
+    "from": ".k2",
+    "to": [
+     940,
+     530
+    ],
+    "ms": 420,
+    "out_ms": 560
+   },
+   "start": {
+    "x": 960,
+    "y": 540,
+    "s": 1.15,
+    "rx": 6
+   },
+   "events": [
+    {
+     "at": 200,
+     "words": ".k1",
+     "gap": 160
+    },
+    {
+     "at": 900,
+     "stagger": ".msg",
+     "gap": 260
+    },
+    {
+     "at": 900,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1,
+      "rx": 0,
+      "ms": 2500,
+      "ease": "soft"
+     }
+    },
+    {
+     "at": 3500,
+     "show": ".msg",
+     "cls": "faded"
+    },
+    {
+     "at": 3500,
+     "show": ".k1",
+     "cls": "faded"
+    },
+    {
+     "at": 3700,
+     "words": ".k2",
+     "gap": 150
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#dbf6ef",
+   "html": "assets/scenes/s2_chief.html",
+   "duration": 8000,
+   "start": {
+    "x": 960,
+    "y": 560,
+    "s": 1.12
+   },
+   "events": [
+    {
+     "at": 200,
+     "show": ".chief"
+    },
+    {
+     "at": 200,
+     "cue": "pop"
+    },
+    {
+     "at": 900,
+     "show": ".chief",
+     "cls": "waving"
+    },
+    {
+     "at": 1000,
+     "show": ".chief",
+     "cls": "happy"
+    },
+    {
+     "at": 1100,
+     "show": ".b1"
+    },
+    {
+     "at": 1100,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1,
+      "ms": 2000,
+      "ease": "soft"
+     }
+    },
+    {
+     "at": 3000,
+     "hide": ".b1"
+    },
+    {
+     "at": 3000,
+     "hide": ".chief",
+     "cls": "waving"
+    },
+    {
+     "at": 3000,
+     "hide": ".chief",
+     "cls": "happy"
+    },
+    {
+     "at": 3100,
+     "stagger": ".msg",
+     "gap": 200
+    },
+    {
+     "at": 3200,
+     "show": ".chief",
+     "cls": "look-l"
+    },
+    {
+     "at": 3900,
+     "hide": ".chief",
+     "cls": "look-l"
+    },
+    {
+     "at": 3900,
+     "show": ".chief",
+     "cls": "talk"
+    },
+    {
+     "at": 3900,
+     "show": ".b2"
+    },
+    {
+     "at": 4300,
+     "show": ".msg",
+     "cls": "faded"
+    },
+    {
+     "at": 4300,
+     "stagger": ".ask",
+     "gap": 350
+    },
+    {
+     "at": 4500,
+     "show": ".chief",
+     "cls": "look-r"
+    },
+    {
+     "at": 6200,
+     "hide": ".chief",
+     "cls": "talk"
+    },
+    {
+     "at": 6200,
+     "show": ".chief",
+     "cls": "happy"
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#e2efff",
+   "html": "assets/scenes/s3_replies.html",
+   "duration": 8200,
+   "start": {
+    "x": 1000,
+    "y": 540,
+    "s": 1.08
+   },
+   "events": [
+    {
+     "at": 200,
+     "show": ".drafter"
+    },
+    {
+     "at": 200,
+     "cue": "pop"
+    },
+    {
+     "at": 400,
+     "show": ".c1"
+    },
+    {
+     "at": 900,
+     "words": ".dr",
+     "gap": 70
+    },
+    {
+     "at": 900,
+     "show": ".drafter",
+     "cls": "talk"
+    },
+    {
+     "at": 900,
+     "show": ".drafter",
+     "cls": "look-r"
+    },
+    {
+     "at": 1200,
+     "show": ".b1"
+    },
+    {
+     "at": 3300,
+     "hide": ".drafter",
+     "cls": "talk"
+    },
+    {
+     "at": 3400,
+     "cam": {
+      "focus": ".rw",
+      "s": 1.6,
+      "ms": 1000,
+      "ease": "spring-soft"
+     }
+    },
+    {
+     "at": 4600,
+     "cam": {
+      "focus": ".send",
+      "s": 2.2,
+      "ms": 1100,
+      "ease": "spring-soft"
+     }
+    },
+    {
+     "at": 4600,
+     "cue": "whoosh"
+    },
+    {
+     "at": 5000,
+     "click": ".send",
+     "ms": 800
+    },
+    {
+     "at": 6000,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1,
+      "ms": 1300
+     }
+    },
+    {
+     "at": 6100,
+     "hide": ".drafter",
+     "cls": "look-r"
+    },
+    {
+     "at": 6100,
+     "show": ".drafter",
+     "cls": "happy"
+    },
+    {
+     "at": 6200,
+     "show": ".drafter",
+     "cls": "hop"
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#ebe6ff",
+   "html": "assets/scenes/s4_bob.html",
+   "duration": 8200,
+   "start": {
+    "x": 760,
+    "y": 560,
+    "s": 1.15
+   },
+   "events": [
+    {
+     "at": 200,
+     "show": ".bob"
+    },
+    {
+     "at": 200,
+     "cue": "pop"
+    },
+    {
+     "at": 300,
+     "show": ".c1"
+    },
+    {
+     "at": 900,
+     "words": ".ty",
+     "gap": 150
+    },
+    {
+     "at": 900,
+     "show": ".bob",
+     "cls": "look-l"
+    },
+    {
+     "at": 2200,
+     "cam": {
+      "focus": ".start",
+      "s": 1.9,
+      "ms": 1000,
+      "ease": "spring-soft"
+     }
+    },
+    {
+     "at": 2200,
+     "cue": "whoosh"
+    },
+    {
+     "at": 2700,
+     "click": ".start",
+     "ms": 700
+    },
+    {
+     "at": 3000,
+     "morph": ".st",
+     "to": {
+      "w": 230,
+      "html": "<i data-lucide=\"clock\"></i>Queued"
+     },
+     "ms": 600
+    },
+    {
+     "at": 3600,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1,
+      "ms": 1300
+     }
+    },
+    {
+     "at": 3700,
+     "hide": ".bob",
+     "cls": "look-l"
+    },
+    {
+     "at": 3700,
+     "show": ".bob",
+     "cls": "surprised"
+    },
+    {
+     "at": 4000,
+     "morph": ".st",
+     "to": {
+      "w": 330,
+      "bg": "#256ba2",
+      "html": "<i data-lucide=\"hammer\"></i>Building 40%"
+     },
+     "ms": 600
+    },
+    {
+     "at": 4300,
+     "hide": ".bob",
+     "cls": "surprised"
+    },
+    {
+     "at": 4300,
+     "show": ".bob",
+     "cls": "talk"
+    },
+    {
+     "at": 4300,
+     "show": ".b1"
+    },
+    {
+     "at": 4900,
+     "morph": ".st",
+     "to": {
+      "w": 330,
+      "html": "<i data-lucide=\"hammer\"></i>Building 80%"
+     },
+     "ms": 500
+    },
+    {
+     "at": 5800,
+     "hide": ".bob",
+     "cls": "talk"
+    },
+    {
+     "at": 5800,
+     "show": ".out1"
+    },
+    {
+     "at": 5800,
+     "show": ".bob",
+     "cls": "happy"
+    },
+    {
+     "at": 5800,
+     "morph": ".st",
+     "to": {
+      "w": 250,
+      "bg": "#1fa898",
+      "html": "<i data-lucide=\"check\"></i>Ready"
+     },
+     "ms": 700
+    },
+    {
+     "at": 6000,
+     "cam": {
+      "focus": ".out1",
+      "s": 1.4,
+      "ms": 1200,
+      "ease": "spring-soft"
+     }
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#def1ff",
+   "html": "assets/scenes/s5_meet.html",
+   "duration": 8000,
+   "start": {
+    "x": 960,
+    "y": 540,
+    "s": 1.06
+   },
+   "events": [
+    {
+     "at": 200,
+     "show": ".planner"
+    },
+    {
+     "at": 200,
+     "cue": "pop"
+    },
+    {
+     "at": 600,
+     "show": ".k1"
+    },
+    {
+     "at": 900,
+     "show": ".planner",
+     "cls": "talk"
+    },
+    {
+     "at": 900,
+     "show": ".b1"
+    },
+    {
+     "at": 1500,
+     "show": ".ok1"
+    },
+    {
+     "at": 3000,
+     "hide": ".b1"
+    },
+    {
+     "at": 3100,
+     "show": ".b2"
+    },
+    {
+     "at": 3100,
+     "show": ".k2"
+    },
+    {
+     "at": 4400,
+     "hide": ".planner",
+     "cls": "talk"
+    },
+    {
+     "at": 4500,
+     "cam": {
+      "focus": ".appr",
+      "s": 1.9,
+      "ms": 1000,
+      "ease": "spring-soft"
+     }
+    },
+    {
+     "at": 4500,
+     "cue": "whoosh"
+    },
+    {
+     "at": 5000,
+     "click": ".appr",
+     "ms": 700
+    },
+    {
+     "at": 5800,
+     "show": ".ok2"
+    },
+    {
+     "at": 6000,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1,
+      "ms": 1200
+     }
+    },
+    {
+     "at": 6100,
+     "show": ".planner",
+     "cls": "happy"
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#eef2f8",
+   "html": "assets/scenes/s6_office.html",
+   "duration": 8000,
+   "start": {
+    "x": 960,
+    "y": 600,
+    "s": 1.25
+   },
+   "events": [
+    {
+     "at": 200,
+     "stagger": ".masc",
+     "gap": 250
+    },
+    {
+     "at": 200,
+     "cue": "pop"
+    },
+    {
+     "at": 450,
+     "cue": "pop"
+    },
+    {
+     "at": 700,
+     "cue": "pop"
+    },
+    {
+     "at": 950,
+     "cue": "pop"
+    },
+    {
+     "at": 1400,
+     "cam": {
+      "x": 960,
+      "y": 520,
+      "s": 1,
+      "ms": 1500
+     }
+    },
+    {
+     "at": 1600,
+     "stagger": ".stat",
+     "gap": 250
+    },
+    {
+     "at": 1800,
+     "count": [
+      ".c0",
+      2
+     ],
+     "ms": 800
+    },
+    {
+     "at": 2050,
+     "count": [
+      ".c1",
+      3
+     ],
+     "ms": 900
+    },
+    {
+     "at": 2300,
+     "count": [
+      ".c2",
+      12
+     ],
+     "ms": 1400
+    },
+    {
+     "at": 3200,
+     "words": ".k1",
+     "gap": 130
+    },
+    {
+     "at": 3800,
+     "show": ".masc",
+     "cls": "happy"
+    },
+    {
+     "at": 3800,
+     "show": ".t0",
+     "cls": "waving"
+    },
+    {
+     "at": 4600,
+     "show": ".t2",
+     "cls": "hop"
+    }
+   ]
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#e6e8ff",
+   "html": "assets/scenes/s7_weekend.html",
+   "duration": 7000,
+   "start": {
+    "x": 960,
+    "y": 520,
+    "s": 1.05
+   },
+   "events": [
+    {
+     "at": 400,
+     "click": ".cl",
+     "ms": 800
+    },
+    {
+     "at": 1300,
+     "show": ".nt"
+    },
+    {
+     "at": 1300,
+     "cam": {
+      "x": 960,
+      "y": 540,
+      "s": 1.12,
+      "ms": 5000,
+      "ease": "soft"
+     }
+    },
+    {
+     "at": 1500,
+     "stagger": ".masc",
+     "gap": 200,
+     "cls": "sleep"
+    },
+    {
+     "at": 2400,
+     "stagger": ".zs",
+     "gap": 200
+    },
+    {
+     "at": 2700,
+     "words": ".k1",
+     "gap": 160
+    }
+   ],
+   "exit": {
+    "flood": "#20206e",
+    "from": [
+     960,
+     540
+    ],
+    "to": [
+     960,
+     330
+    ],
+    "ms": 450,
+    "out_ms": 650
+   }
+  },
+  {
+   "type": "motion",
+   "bg": "studio:#e2eaff",
+   "html": "assets/scenes/s8_end.html",
+   "duration": 5200,
+   "start": {
+    "x": 960,
+    "y": 540,
+    "s": 1
+   },
+   "events": [
+    {
+     "at": 200,
+     "words": ".k1",
+     "gap": 70
+    },
+    {
+     "at": 1300,
+     "show": ".sub"
+    },
+    {
+     "at": 1500,
+     "stagger": ".masc",
+     "gap": 180
+    },
+    {
+     "at": 1500,
+     "cue": "pop"
+    },
+    {
+     "at": 1680,
+     "cue": "pop"
+    },
+    {
+     "at": 1860,
+     "cue": "pop"
+    },
+    {
+     "at": 2040,
+     "cue": "pop"
+    },
+    {
+     "at": 2600,
+     "stagger": ".masc",
+     "gap": 150,
+     "cls": "hop"
+    },
+    {
+     "at": 3000,
+     "show": ".masc",
+     "cls": "happy"
+    }
+   ]
+  }
+ ],
+ "motion_blur": 4,
+ "sfx": {
+  "click": {
+   "file": "assets/sfx/click.mp3",
+   "volume": 1.0
+  },
+  "whoosh": {
+   "file": "assets/sfx/whoosh.mp3",
+   "volume": 0.5
+  },
+  "flood": {
+   "file": "assets/sfx/flood.mp3",
+   "volume": 0.6
+  },
+  "pop": {
+   "file": "assets/sfx/pop.mp3",
+   "volume": 0.55
+  }
+ }
+}

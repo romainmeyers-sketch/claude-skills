@@ -1,0 +1,16 @@
+{
+  "name": "metis-strategy/metis-pdf-creator",
+  "version": "0.2.1",
+  "scope": "firm",
+  "private": false,
+  "summary": "Creates professional, on-brand PDF documents for Metis Strategy using PDFKit (Node.js). Use this skill whenever the user asks to create, generate, produce, or build any PDF that should follow Metis brand standards \u00e2\u20ac\u201d including consultant guides, setup documents, reference cards, one-pagers, methodology overviews, CDLC materials, and internal reports. Trigger on phrases like \"create a PDF\", \"build a branded document\", \"generate a guide\", \"make a one-pager\", or any request to produce a formatted document for Metis Strategy. Also trigger when the user asks to fix or regenerate an existing Metis PDF that has formatting issues.",
+  "skills": {
+    "metis-pdf-creator": {
+      "path": "SKILL.md",
+      "attachments": [
+        "references/pdfkit-helpers.md",
+        "references/graphic-devices.md"
+      ]
+    }
+  }
+}

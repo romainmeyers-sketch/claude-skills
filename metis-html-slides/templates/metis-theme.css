@@ -1,0 +1,70 @@
+/* ═══════════════════════════════════════════════════════════
+   Metis Strategy Brand Theme — v2
+   Exact brand palette from Metis Brand Identity guide.
+   Swap this file to change the entire presentation's brand.
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  /* ── Primary Brand Anchors ── */
+  --color-primary:    #20216f;   /* Dark Blue — titles, headers, dark backgrounds */
+  --color-accent:     #3cdbc0;   /* Metis Green — highlights, dividers, markers */
+
+  /* ── Sequence Blues ── */
+  --color-light-blue: #00bdef;   /* Light Blue — accent elements */
+  --color-secondary:  #256ba2;   /* Medium Blue — subheadings, secondary accents */
+
+  /* ── Sequence Greens ── */
+  --color-med-green:  #53a092;   /* Medium Green — supporting accent */
+  --color-dark-green: #007d66;   /* Dark Green — supporting accent */
+
+  /* ── Neutrals ── */
+  --color-white:      #ffffff;
+  --color-bg-light:   #f4f6fa;   /* Light Background — card/box backgrounds */
+  --color-text:       #3a3f47;   /* Dark text — body copy */
+  --color-gray:       #7b8692;   /* Gray — captions, muted text */
+  --color-text-muted: #9ca3af;   /* Muted — footnotes, nav hints */
+  --color-border:     rgba(0, 0, 0, 0.08);
+
+  /* ── Category Accent Colors (for multi-color bars and badges) ── */
+  --color-cat-orange:  #e8873d;
+  --color-cat-red:     #d94f4f;
+  --color-cat-blue:    #4a90d9;
+  --color-cat-purple:  #7b61c2;
+  --color-cat-green:   #3dae8f;
+  --color-cat-mint:    var(--color-accent);
+
+  /* ── Tier gradient colors (pricing/assessment) ── */
+  --color-tier-light: #d1e3f1;   /* Tier 1 / Foundational */
+  --color-tier-med:   #a3c7e3;   /* Tier 2 / Strategic */
+  --color-tier-dark:  #75abd5;   /* Tier 3 / Embedded */
+
+  /* ── Supplementary ── */
+  --color-light-mint: #d6f7f2;
+  --color-purple:     #762cb3;
+
+  /* ── Typography ── */
+  --font-family:        'Open Sans', 'Calibri', 'Segoe UI', sans-serif;
+  --font-size-display:  3.2rem;    /* Cover/hero headlines */
+  --font-size-title:    2.4rem;    /* Slide titles */
+  --font-size-subtitle: 1.15rem;   /* Slide subtitles */
+  --font-size-body:     1rem;      /* Body copy */
+  --font-size-small:    0.85rem;   /* Small text */
+  --font-size-caption:  0.75rem;   /* Captions, footnotes */
+
+  /* ── Sidebar ── */
+  --sidebar-width:      280px;
+  --sidebar-bg:         #f8f9fc;
+  --sidebar-text:       var(--color-gray);
+  --sidebar-active:     var(--color-primary);
+  --sidebar-hover-bg:   #eef1f6;
+
+  /* ── Layout ── */
+  --content-padding:    2.5rem 4rem 2rem 4rem;
+  --header-height:      3rem;
+
+  /* ── Footer ── */
+  --footer-text: "Proprietary & Confidential — Metis Strategy LLC 2026";
+  --footer-border-color: var(--color-accent);
+}

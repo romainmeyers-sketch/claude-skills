@@ -1,0 +1,280 @@
+{
+ "output_name": "cx-ai-playbook-45s-v2",
+ "brand": {
+  "bg": "#081c42",
+  "accent": "#ff9a1f",
+  "muted": "#c9dbf5",
+  "font": "Inter",
+  "glow1": "rgba(8,117,225,.45)",
+  "glow2": "rgba(255,161,38,.16)",
+  "sun1": "#0050b3",
+  "sun2": "#1477d6",
+  "sun3": "#6f8fe0",
+  "sun4": "#e9a98f",
+  "sun5": "#ff8a1f",
+  "blue": "#0050b3",
+  "blue-hi": "#1a74d4",
+  "accent-light": "#0050b3",
+  "mesh1": "rgba(8,117,225,.85)",
+  "mesh2": "rgba(64,160,255,.55)",
+  "mesh3": "rgba(255,161,38,.42)",
+  "mesh-bg": "#081c42",
+  "ice1": "rgba(40,120,240,.30)",
+  "ice2": "rgba(255,154,31,.28)",
+  "ice-bg": "#eef3fa",
+  "text": "#ffffff"
+ },
+ "pace": 0.84,
+ "end_hold": 900,
+ "music": {
+  "file": "assets/music_temp.mp3",
+  "lift_on": "app_in"
+ },
+ "app": {
+  "page": "assets/app.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "url_label": "script.google.com · CX AI Playbook",
+  "ready": "document.querySelector('#chooser:not([hidden])')",
+  "frame": "none"
+ },
+ "scenes": [
+  {
+   "type": "beats",
+   "bg": "ice",
+   "words": [
+    "AI is everywhere.",
+    "Who owns it?",
+    "Who **approves** it?"
+   ],
+   "word_ms": 600,
+   "hold": 450
+  },
+  {
+   "type": "pill",
+   "bg": "ice",
+   "icon": "play",
+   "text": "Meet the **playbook**",
+   "hold": 600
+  },
+  {
+   "type": "float",
+   "bg": "ice",
+   "title": "Everything CX needs to **run AI.**",
+   "duration": 4800,
+   "images": [
+    {
+     "file": "assets/pc_hero.png",
+     "width": 720
+    },
+    {
+     "file": "assets/pc_raci.png",
+     "width": 470
+    },
+    {
+     "file": "assets/pc_stepper.png",
+     "width": 640
+    },
+    {
+     "file": "assets/pc_path.png",
+     "width": 600
+    },
+    {
+     "file": "assets/pc_inside.png",
+     "width": 560
+    },
+    {
+     "file": "assets/pc_chooser.png",
+     "width": 380
+    }
+   ]
+  },
+  {
+   "type": "reveal",
+   "bg": "ice",
+   "wipe": true,
+   "intro": "This is the",
+   "name": "CX AI Playbook",
+   "logo": "arc",
+   "pill": "Workday CX Organization · Version 1.0",
+   "intro_ms": 800,
+   "hold": 600
+  },
+  {
+   "type": "app",
+   "enter": "flyin",
+   "bg": "ice",
+   "steps": [
+    {
+     "caption": "Set up in ten seconds",
+     "wait": 300
+    },
+    {
+     "focus": "#chooser .wz-step[data-wz='0']",
+     "scale": 1.35,
+     "ms": 900
+    },
+    {
+     "type": [
+      "#wz-name",
+      "Alex"
+     ],
+     "after": 500
+    },
+    {
+     "click": "#chooser [data-wz-go='1']",
+     "after": 700
+    },
+    {
+     "click": "#chooser [data-wz-go='2']",
+     "after": 400
+    },
+    {
+     "select": [
+      "#wz-role",
+      "m"
+     ],
+     "after": 500
+    },
+    {
+     "click": "#wz-role-go",
+     "after": 200
+    },
+    {
+     "caption": "Your reading path, by role"
+    },
+    {
+     "fit": true,
+     "ms": 700
+    },
+    {
+     "focus": "#path-banner",
+     "scale": 1.35,
+     "ms": 900,
+     "after": 1000
+    },
+    {
+     "caption": "Ask it anything"
+    },
+    {
+     "focus": "#q",
+     "scale": 1.8,
+     "ms": 800
+    },
+    {
+     "type": [
+      "#q",
+      "release"
+     ],
+     "after": 700
+    },
+    {
+     "focus": "#q",
+     "scale": 1.15,
+     "cy": 300,
+     "ms": 800,
+     "after": 1100
+    },
+    {
+     "js": "const q=document.querySelector('#q'); q.value=''; q.dispatchEvent(new Event('input',{bubbles:true})); q.blur();"
+    },
+    {
+     "fit": true,
+     "ms": 600
+    },
+    {
+     "caption": "Walk the release workflow, step by step"
+    },
+    {
+     "scroll_to": ".stepper",
+     "offset": 160,
+     "ms": 700
+    },
+    {
+     "focus": ".stepper",
+     "scale": 1.3,
+     "ms": 800
+    },
+    {
+     "tilt": [
+      5,
+      -8,
+      0
+     ],
+     "ms": 800
+    },
+    {
+     "click": ".stepper [data-step='1']",
+     "after": 500
+    },
+    {
+     "click": ".stepper [data-step='1']",
+     "after": 500
+    },
+    {
+     "click": ".stepper [data-step='1']",
+     "after": 700
+    },
+    {
+     "tilt": [
+      0,
+      0,
+      0
+     ],
+     "ms": 700
+    },
+    {
+     "caption": "15 decisions. Clear owners."
+    },
+    {
+     "scroll_to": "#raci",
+     "offset": 140,
+     "ms": 700
+    },
+    {
+     "focus": "#raci",
+     "scale": 1.25,
+     "ms": 900
+    },
+    {
+     "tilt": [
+      -4,
+      9,
+      0
+     ],
+     "ms": 900,
+     "wait": 900
+    },
+    {
+     "tilt": [
+      0,
+      0,
+      0
+     ],
+     "ms": 600
+    }
+   ]
+  },
+  {
+   "type": "beats",
+   "bg": "mesh",
+   "words": [
+    "Owned.",
+    "Governed.",
+    "**Scaled.**"
+   ],
+   "word_ms": 480,
+   "hold": 400
+  },
+  {
+   "type": "endcard",
+   "bg": "blue",
+   "wipe": true,
+   "title": "One playbook for **how CX runs AI.**",
+   "sub": "Built by Metis Strategy for the Workday CX Organization",
+   "duration": 3600
+  }
+ ]
+}

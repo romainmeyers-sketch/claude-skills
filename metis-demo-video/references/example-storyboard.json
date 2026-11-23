@@ -1,0 +1,372 @@
+{
+ "output_name": "bt-guide-demo",
+ "brand": {
+  "bg": "#11294d",
+  "accent": "#f49813",
+  "muted": "#c7d6ee",
+  "font": "Archivo"
+ },
+ "pace": 0.82,
+ "music": {
+  "file": "assets/music.mp3",
+  "lift_on": "app_in"
+ },
+ "app": {
+  "page": "assets/app.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "url_label": "script.google.com/a/macros/workday.com/s/.../exec",
+  "fake_date": "2026-11-04T09:30:00",
+  "ready": "document.querySelector('#intro:not([hidden])')",
+  "setup_js": "\nconst who = {pm:'sam.taylor@workday.com', dm:'dan.okafor@workday.com', sl:'priya.shah@workday.com', dt:'kai.nguyen@workday.com', all:'priya.shah@workday.com'};\nconst c = window.__db.checks['Benefits'] = {};\n['#w0', '#w1'].forEach((w, i) => document.querySelectorAll(w + ' .action').forEach((a, j) => {\n  c[a.dataset.id] = {by: who[a.dataset.role], at: '2026-' + (i ? '10-' + (28 + j % 3) : '10-' + (21 + j % 3)) + 'T10:00:00'}; }));\ndocument.querySelectorAll('#launch .criteria li, #s1 .criteria li').forEach(li => c[li.dataset.id] = {by: 'priya.shah@workday.com', at: '2026-10-30T16:00:00'});\n['1f9e4ad5cc', '2da6ed6d1c', '85730ec9ed'].forEach(id => { const a = document.querySelector('[data-id=\"' + id + '\"]'); c[id] = {by: who[a.dataset.role], at: '2026-11-03T15:00:00'}; });\nconst ids = [...document.querySelectorAll('#launch [data-id], #s1 [data-id], #s2 [data-id]')].filter(li => li.querySelector('input[type=checkbox]')).map(li => li.dataset.id);\nconst others = {'Compensation': [30, 'jordan.lee@workday.com', '11-03'], 'Source to Pay': [24, 'maya.chen@workday.com', '11-02'], 'Talent Acquisition': [12, 'ines.garcia@workday.com', '10-30']};\nObject.keys(others).forEach(t => { const [n, by, d] = others[t]; const m = window.__db.checks[t] = {}; ids.slice(0, n).forEach(id => m[id] = {by: by, at: '2026-' + d + 'T11:00:00'}); window.__db.members[by] = window.__db.members[by] || {team: t, role: 'pm'}; });\n"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "lines": [
+    "Still tracking your rollout",
+    "in a **Word document?**"
+   ],
+   "cards": [
+    {
+     "image": "assets/doc_p5.png",
+     "crop": [
+      500,
+      640,
+      435,
+      300
+     ]
+    },
+    {
+     "image": "assets/doc_p1.png",
+     "crop": [
+      40,
+      40,
+      430,
+      260
+     ]
+    },
+    {
+     "image": "assets/doc_p2.png",
+     "crop": [
+      30,
+      120,
+      460,
+      270
+     ]
+    },
+    {
+     "image": "assets/doc_p6.png",
+     "crop": [
+      40,
+      560,
+      440,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "type": "reveal",
+   "intro": "Meet",
+   "name": "BT Operating Model",
+   "logo": "arcs",
+   "pill": "Implementation Guide · One shared workspace"
+  },
+  {
+   "type": "pages",
+   "kicker": "Before",
+   "title": "A 14-page **Word document.**",
+   "images": [
+    "assets/doc_p1.png",
+    "assets/doc_p2.png",
+    "assets/doc_p6.png",
+    "assets/doc_p5.png"
+   ],
+   "highlight": {
+    "box": [
+     89.5,
+     56,
+     9,
+     41
+    ],
+    "label": "Ticked by hand"
+   },
+   "points": [
+    {
+     "title": "Checkmarks filled in by hand",
+     "body": "A \"Done\" column in a printed or copied table."
+    },
+    {
+     "title": "Everyone works from their own copy",
+     "body": "\"Make a shared copy to track your team's progress.\""
+    },
+    {
+     "title": "No way to see the team's progress",
+     "body": "Who did what, and how far along the team is, stays invisible."
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "kicker": "The problem",
+   "text": "If I check things off, is there a way for Rohan to see it? No, right?",
+   "who": "Grace Crozier, BT Operating Model team"
+  },
+  {
+   "type": "app",
+   "enter": "flyin",
+   "steps": [
+    {
+     "caption": "After: one shared guide for every team",
+     "wait": 1600
+    },
+    {
+     "caption": "First visit: a quick setup, no training needed"
+    },
+    {
+     "focus": "#intro .intro-card",
+     "scale": 1.12,
+     "after": 1500
+    },
+    {
+     "click": "[data-go=\"team\"]",
+     "after": 600
+    },
+    {
+     "caption": "Pick your pod team"
+    },
+    {
+     "focus": "#team-select",
+     "scale": 1.75,
+     "cy": 470
+    },
+    {
+     "select": [
+      "#team-select",
+      "Benefits"
+     ],
+     "after": 1600
+    },
+    {
+     "caption": "Your teammates are already there",
+     "wait": 900
+    },
+    {
+     "focus": "#intro .intro-card",
+     "scale": 1.12,
+     "ms": 900
+    },
+    {
+     "click": "#team-next",
+     "after": 700
+    },
+    {
+     "caption": "Pick your role, so your own actions come first"
+    },
+    {
+     "focus": "#role-pick",
+     "scale": 1.35,
+     "ms": 1000
+    },
+    {
+     "click": "#role-pick [data-pick=\"pm\"]",
+     "after": 900
+    },
+    {
+     "click": "#role-next",
+     "after": 800
+    },
+    {
+     "caption": "Launch week is the same for every team"
+    },
+    {
+     "focus": ".intro-summary",
+     "scale": 1.6,
+     "after": 2000
+    },
+    {
+     "focus": "#intro .intro-card",
+     "scale": 1.12,
+     "ms": 900
+    },
+    {
+     "click": "#intro-open",
+     "after": 300
+    },
+    {
+     "caption": "Straight to this week"
+    },
+    {
+     "fit": true,
+     "after": 800
+    },
+    {
+     "focus": "#w2 .week-head",
+     "scale": 1.55,
+     "dx": 250,
+     "dy": 120,
+     "after": 1300
+    },
+    {
+     "caption": "Check an item: it’s saved for the whole team"
+    },
+    {
+     "focus": "[data-id=\"e2ed74687f\"]",
+     "scale": 1.75
+    },
+    {
+     "click": "[data-id=\"e2ed74687f\"] input[type=checkbox]",
+     "after": 600
+    },
+    {
+     "focus": "[data-id=\"e2ed74687f\"] .who",
+     "scale": 2.3,
+     "dx": -160,
+     "ms": 900,
+     "after": 1400
+    },
+    {
+     "caption": "When a teammate checks something, everyone sees it"
+    },
+    {
+     "focus": "[data-id=\"ee5c23f238\"]",
+     "scale": 1.5,
+     "dy": -40
+    },
+    {
+     "tilt": [
+      4,
+      -7,
+      0
+     ],
+     "ms": 1000
+    },
+    {
+     "notify": {
+      "initials": "ST",
+      "title": "Sam T. just checked an item",
+      "body": "Refresh the top of the backlog weekly ahead of refinement"
+     },
+     "wait": 900
+    },
+    {
+     "js": "window.__db.checks['Benefits']['ee5c23f238'] = {by:'sam.taylor@workday.com', at:'2026-11-04T09:41:00'}; document.dispatchEvent(new Event('visibilitychange'));",
+     "wait": 1300
+    },
+    {
+     "focus": "[data-id=\"ee5c23f238\"] .who",
+     "scale": 2.2,
+     "dx": -160,
+     "ms": 900,
+     "after": 1400
+    },
+    {
+     "notify": false,
+     "tilt": [
+      0,
+      0,
+      0
+     ],
+     "ms": 900
+    },
+    {
+     "caption": "Switch roles to see the whole team’s plan"
+    },
+    {
+     "focus": ".tb-group[role=\"group\"]",
+     "scale": 1.7,
+     "cy": 300
+    },
+    {
+     "click": ".chip[data-role=\"all\"]",
+     "after": 400
+    },
+    {
+     "scroll_to": "#w2",
+     "offset": 90,
+     "ms": 10
+    },
+    {
+     "fit": true,
+     "ms": 900,
+     "after": 1200
+    },
+    {
+     "caption": "Admins see every team’s progress"
+    },
+    {
+     "click": "#admin-btn",
+     "after": 700
+    },
+    {
+     "focus": ".adm-table",
+     "scale": 1.45,
+     "dx": 40,
+     "cy": 470,
+     "after": 2000
+    },
+    {
+     "caption": "Who did what, and the power to fix mistakes"
+    },
+    {
+     "click": ".adm-table tbody tr",
+     "after": 600
+    },
+    {
+     "scroll_el": [
+      "#adm .adm-card",
+      420
+     ],
+     "ms": 1000
+    },
+    {
+     "focus": "#adm-body .adm-sec:last-of-type .adm-row .adm-btn",
+     "scale": 1.7,
+     "dx": -330,
+     "ms": 900
+    },
+    {
+     "click": "#adm-body .adm-sec:last-of-type .adm-row .adm-btn",
+     "after": 1400
+    },
+    {
+     "click": "#adm-x",
+     "after": 400
+    },
+    {
+     "fit": true,
+     "ms": 800
+    }
+   ]
+  },
+  {
+   "type": "cards",
+   "kicker": "How it’s built",
+   "title": "No servers. No licenses. **The client owns it.**",
+   "cards": [
+    {
+     "title": "Apps Script + one Google Sheet",
+     "body": "The same HTML guide, served as a web app. Every checkmark is a row in a Sheet."
+    },
+    {
+     "title": "Inside the client’s Google",
+     "body": "People sign in with their work email. The data never leaves the client."
+    },
+    {
+     "title": "Built with Claude Code",
+     "body": "From a Slack question to a live tool in a day, with a 15-minute handoff."
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "kicker": "Why it matters",
+   "title": "A consulting deliverable, turned into a **tool teams actually use.**",
+   "sub": "Checklists, playbooks, onboarding guides, rollout plans. Same pattern.",
+   "duration": 5200
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "metis-strategy/metis-whitepaper",
+  "version": "0.2.4",
+  "scope": "firm",
+  "private": false,
+  "summary": "Produce Metis Strategy whitepapers \u00e2\u20ac\u201d 15\u00e2\u20ac\u201c28 page thought leadership PDFs with a specific structure, visual style, and editorial voice. Use this skill whenever a user asks to create, draft, or structure a whitepaper, thought leadership paper, playbook, or long-form research report for Metis Strategy. Also trigger when the user mentions \"whitepaper,\" \"white paper,\" \"playbook,\" \"thought leadership piece,\" \"long-form report,\" or asks to produce a publishable document that looks like existing Metis research. Output is a polished, print-ready PDF generated from HTML via Playwright \u00e2\u20ac\u201d matching the look and feel of published Metis whitepapers. Always use this skill for whitepaper requests, even if the user just says \"write a whitepaper on X\" without further specification.",
+  "skills": {
+    "metis-whitepaper": {
+      "path": "SKILL.md",
+      "attachments": [
+        "references/content-patterns.md",
+        "references/page-layouts.md",
+        "references/diagram-builders.md",
+        "scripts/render-whitepaper.js"
+      ]
+    }
+  }
+}

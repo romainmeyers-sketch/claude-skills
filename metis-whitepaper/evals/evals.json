@@ -1,0 +1,23 @@
+{
+  "skill_name": "metis-whitepaper",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a Metis Strategy whitepaper on data governance for AI. The audience is CIOs and CDOs. It should be a portrait-orientation playbook style, about 18 pages. Include a cover, introduction, three major sections (Strategy, Governance Framework, and Operating Model), a conclusion, and a credits page. Authors are Alex Kraus (East Coast Partner) and Kira Kessel (Associate). Produce the full outline, all written content, a content DOCX, and a design brief.",
+      "expected_output": "A complete whitepaper package including: (1) A structured outline covering all requested sections, (2) Full prose for every page including hooks, body text, pull quotes, callout boxes, and framework diagram descriptions with 'Source: Metis Strategy' captions, (3) A python-docx script or DOCX file, (4) A page-by-page design brief table. Voice should be confident and editorial. Every section should open with a divider page followed by content pages. Section headers must use eyebrow + SnglArrow pattern. Footer format must be 'Page X | [Short Title]' not the BrandLine.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write the content for a Metis whitepaper called 'The CTO's Guide to Platform Engineering.' Landscape orientation, ~20 pages. Audience: CTOs and VPs of Engineering at mid-to-large enterprises. Three sections: (I) Why Platform Engineering Matters Now, (II) Building the Platform Team, (III) Measuring Platform Value. Include at least two anonymized client examples, one framework diagram description per section, and pull quotes. Give me the full outline first, then write it out.",
+      "expected_output": "Whitepaper with: correct landscape orientation spec, 3 section divider pages with dark navy layout specs and pull statements, content pages with eyebrow+SnglArrow headers, anonymized client examples in the correct inline format ('[sector/industry], for example, [action]. [outcome].'), framework descriptions with Source: Metis Strategy, pull quotes marked [PULL QUOTE]...[/PULL QUOTE], and a design brief. Voice must be editorial/thought-leadership, not client-report style. No 'In today's world' openers.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need a one-page executive summary of a Metis whitepaper, plus the cover page content and a section divider page for 'Section II: Funding Models.' The whitepaper topic is AI investment strategy for Fortune 500 companies. Give me exactly what should appear on each of those three pages.",
+      "expected_output": "Three distinct page outputs: (1) Cover — eyebrow text in caps, large display title, subtitle, placement instructions for logo and trajectory fan; (2) Executive summary / abstract — hook headline, problem statement, Metis POV in bold italic, body text under 300 words; (3) Section II divider — dark navy layout note, centered pill with 'II. Funding Models,' and a strong pull statement (30–60 words) about AI investment. All three should use correct brand colors, typography specs, and footer format.",
+      "files": []
+    }
+  ]
+}

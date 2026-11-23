@@ -1,0 +1,51 @@
+{
+  "_comment": "Curated exemplars per Timesaver catalog section. Loaded at build init (§2.5 Phase 1.0) so the agent has visual awareness of every section before per-slide planning. Slide-Ns drawn from references/timesaver_index.md.",
+  "_png_path_template": "G:\\Shared drives\\Knowledge Management\\New Brand Assets\\PPT Assets\\timesaver_pngs\\slide-{N}.png",
+  "sections": {
+    "structural_layouts": {
+      "description": "Covers, dividers, content layouts",
+      "exemplars": [2, 3, 8]
+    },
+    "text_based": {
+      "description": "Exec summaries, statements, quotes, lists, tables",
+      "exemplars": [10, 22, 23, 36]
+    },
+    "charts_bar_column": {
+      "description": "Bar charts and column charts (incl. stacked, 100%)",
+      "exemplars": [46, 47, 54]
+    },
+    "charts_line_area": {
+      "description": "Line and area charts",
+      "exemplars": [71, 92]
+    },
+    "charts_pie_radial": {
+      "description": "Pie / doughnut / Harvey ball / wheel and radial",
+      "exemplars": [82, 96]
+    },
+    "workplan_process": {
+      "description": "Flows, timelines, journeys, decision trees, gantt",
+      "exemplars": [105, 114, 130, 138]
+    },
+    "organization_relationships": {
+      "description": "Org charts, networks, matrices",
+      "exemplars": [144, 151, 153]
+    },
+    "concept_metaphors": {
+      "description": "House, hex, pyramid, triangle, funnel, gears, venn, ladder, etc.",
+      "exemplars": [155, 156, 159, 167, 175, 179, 180, 184]
+    },
+    "maps": {
+      "description": "Geographic and heat maps",
+      "exemplars": [189, 191]
+    },
+    "consulting_frameworks": {
+      "description": "Porter, McKinsey, BCG, PESTEL, Ansoff, etc.",
+      "exemplars": [194, 197, 200, 209]
+    },
+    "executive_summary": {
+      "description": "Narrative arcs (Vision-Strategy-Action, SBAR, Goal-Obstacle-Strategy-Action, etc.)",
+      "exemplars": [219, 222, 223, 235, 238]
+    }
+  },
+  "load_order_note": "Load all exemplars at build init via the multimodal Read tool. PNG paths resolve via the _png_path_template above. Total: ~40-50 PNGs depending on count; bounded, one-time per deck."
+}

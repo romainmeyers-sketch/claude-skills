@@ -1,0 +1,156 @@
+# starter_capabilities_copy.yaml — Capabilities-mode template (flat sections)
+#
+# Capabilities mode: reusable marketing asset, no named prospect.
+# Used for thought-leadership decks, offering one-pagers, trade show handouts.
+#
+# Key differences from buyer mode:
+#   - No prepared_for line (use tagline instead)
+#   - No next_steps page (use closing with contact info)
+#   - Industry-neutral or market-framed language (not buyer transcript)
+#   - Problem framing uses industry-typical metrics, not buyer's pain
+#
+# See ai-pm-capabilities-v2.yaml in the AI PM working folder for a
+# complete worked example (22 pages).
+#
+# Rebuild with:
+#   PYTHON="C:/Users/.../python.exe"
+#   "$PYTHON" starter_capabilities.py <your-copy>.yaml
+
+doc_label: "[Capability Name]"
+output_file: "[Capability-Name]_Metis-Strategy.pdf"
+
+sections:
+  # ─── COVER ────────────────────────────────────────────────────────
+  - type: cover
+    eyebrow: "Metis Strategy Capability"
+    title_line_1: "[Capability Headline Line 1]"
+    title_line_2: "[Capability Headline Line 2]"
+    tagline: "Driving change. Elevating leaders."
+    photo: "G:/Shared drives/Knowledge Management/New Brand Assets/PPT Assets/Metis PPT Images/pexels-pixabay-63320-bw.jpg"
+
+  # ─── PROBLEM FRAMING ──────────────────────────────────────────────
+  - type: problem_framing
+    intent: "Name the industry-level failure modes this capability addresses"
+    photo: "G:/Shared drives/Knowledge Management/New Brand Assets/PPT Assets/Metis PPT Images/pexels-divinetechygirl-1181311-bw.jpg"
+    eyebrow: "The [Topic] Challenge"
+    title: "[Industry-level title — not buyer-specific]"
+    pull_quote: "[Market-framed quote or thesis statement, 1–2 sentences]"
+    numbered_items:
+      - title: "[First market dynamic]"
+        body: "One to two sentences in industry-neutral language."
+      - title: "[Second market dynamic]"
+        body: "One to two sentences."
+      - title: "[Third market dynamic]"
+        body: "One to two sentences."
+    metrics:
+      - number: "[Metric 1]"
+        label: "[Industry-typical stat]"
+      - number: "[Metric 2]"
+        label: "[Industry-typical stat]"
+      - number: "[Metric 3]"
+        label: "[Industry-typical stat]"
+
+  # ─── APPROACH ─────────────────────────────────────────────────────
+  - type: section_divider
+    title: "Our Approach\nto [Topic]"
+    subtitle: "[Integrated capabilities, sequenced from X through Y]"
+    device_path: nexus
+
+  - type: modules_overview
+    intent: "Frame the capabilities as a continuous thread"
+    eyebrow: "Capability Overview"
+    title: "[N] Capabilities, One Continuous Operating Thread"
+    subtitle: "[Each capability produces standalone value; together they close the loop]"
+    modules:
+      - title: "A. [Capability Name]"
+        body: "One sentence on what this capability does and its output."
+      - title: "B. [Capability Name]"
+        body: "One sentence."
+      - title: "C. [Capability Name]"
+        body: "One sentence."
+      - title: "D. [Capability Name]"
+        body: "One sentence."
+    callout:
+      label: "SEQUENCING"
+      body: "Capabilities can be engaged independently or as an integrated program, based on organizational priorities and readiness."
+
+  # Module detail pages follow. Each module typically has:
+  #   section_divider + activities_deliverables + one of (pillars | timeline | signature_image)
+
+  # ─── PROOF POINTS ─────────────────────────────────────────────────
+  - type: section_divider
+    title: "Proof Points"
+    subtitle: "Quantified outcomes from representative engagements."
+    device_path: nexus
+
+  - type: proof_overview
+    intent: "Show end-to-end scope with a defensible dollar number"
+    photo: "G:/Shared drives/Knowledge Management/New Brand Assets/PPT Assets/Metis PPT Images/Metis_flatiron_bw2.jpg"
+    eyebrow: "Engagement Overview"
+    title: "[Industry Descriptor — e.g., Fortune 500 Manufacturer]"
+    photo_big_line_1: "$XXM+"
+    photo_big_line_2: "[Headline outcome]"
+    photo_subtitle: "[Industry segment]"
+    context: "One sentence on the client situation."
+    phases:
+      - title: "Phase 1 Title"
+        body: "One sentence."
+      - title: "Phase 2 Title"
+        body: "One sentence."
+      - title: "Phase 3 Title"
+        body: "One sentence."
+    metrics:
+      - number: "[N]"
+        label: "[Label]"
+      - number: "[N]"
+        label: "[Label]"
+      - number: "[N]"
+        label: "[Label]"
+    relevance_label: "WHAT THIS DEMONSTRATES"
+    relevance_body: "One to two sentences on what the proof establishes about the capability."
+
+  # Optionally: one or more minicase_pair pages for additional proof
+
+  # ─── DIFFERENTIATORS ──────────────────────────────────────────────
+  - type: pillars
+    intent: "Compress the differentiators to points a reader can repeat back"
+    eyebrow: "What Makes This Different"
+    title: "[N] Differentiators That Set Our Approach Apart"
+    subtitle: "[Optional subtitle]"
+    pillars:
+      - title: "[Differentiator 1]"
+        purpose: "One sentence on the differentiator."
+        bullets:
+          - "Supporting point 1"
+          - "Supporting point 2"
+          - "Supporting point 3"
+      - title: "[Differentiator 2]"
+        purpose: "One sentence."
+        bullets:
+          - "Point 1"
+          - "Point 2"
+          - "Point 3"
+      - title: "[Differentiator 3]"
+        purpose: "One sentence."
+        bullets:
+          - "Point 1"
+          - "Point 2"
+          - "Point 3"
+      - title: "[Differentiator 4]"
+        purpose: "One sentence."
+        bullets:
+          - "Point 1"
+          - "Point 2"
+          - "Point 3"
+    callout:
+      label: "HOW WE HELP YOU"
+      body: "A forward-looking statement on how Metis partners with organizations in this capability area."
+
+  # ─── CLOSING ──────────────────────────────────────────────────────
+  - type: closing
+    thank_you: "Thank you."
+    name: "[Author Name]"
+    role: "[Author Role], Metis Strategy"
+    email: "[email@metisstrategy.com]"
+    brandline: "Driving change. Elevating leaders."
+    copyright: "© 2026 Metis Strategy LLC. All rights reserved. Proprietary & Confidential."

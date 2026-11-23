@@ -1,0 +1,94 @@
+{
+  "skill_name": "executive-slide-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to build the executive overview section for a digital transformation proposal we're putting together for a regional bank. The initiative is about modernizing their core banking platform — moving off a 30-year-old mainframe to a cloud-native stack. The business case is roughly $45M over 3 years, with expected efficiency gains of 40% in operations and a 2-year payback. The audience is the CEO and CFO. I have a 4-slide budget for this section. Help me figure out how to structure the story and what each slide should do.",
+      "expected_output": "A clear narrative structure for 4 slides: session-opening questions (template + audience confirmation), a content map identifying key messages and what stays off slides, a slide-by-slide outline with one job per slide and structure recommendations from the asset library, executive-quality draft copy, and a metis-pptx build brief.",
+      "assertions": [
+        {
+          "name": "asks-for-template-before-drafting",
+          "description": "The skill asks for the PowerPoint template before drafting any slide content",
+          "type": "qualitative"
+        },
+        {
+          "name": "one-job-per-slide",
+          "description": "Each slide in the outline has exactly one clearly named job",
+          "type": "qualitative"
+        },
+        {
+          "name": "no-invented-metrics",
+          "description": "The skill does not invent metrics or projections beyond those provided ($45M, 40%, 2-year payback)",
+          "type": "qualitative"
+        },
+        {
+          "name": "references-asset-library",
+          "description": "The skill references the shared asset library or metis-pptx design system for slide structure selection",
+          "type": "qualitative"
+        },
+        {
+          "name": "produces-build-brief",
+          "description": "The output includes a structured build brief (or content map + outline) suitable for handoff to metis-pptx",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We're mid-engagement with a healthcare system client. I've got a draft of our 'Strategic Imperatives' section but it's too wordy and reads like a consulting report, not a board presentation. Here's the current draft:\n\nSlide title: Strategic Imperatives for Transformation\nBullet 1: The organization faces a number of significant operational challenges that are creating headwinds for financial performance, including rising labor costs driven by agency staff dependency, which has increased from 12% to 31% of total labor spend over the past 18 months, as well as supply chain inefficiencies that are contributing to an estimated $8M in annual waste.\nBullet 2: Technology fragmentation across 14 disparate systems creates data silos that prevent the organization from generating a unified view of patient and operational data, which in turn limits the leadership team's ability to make timely, data-informed decisions about resource allocation and care delivery.\nBullet 3: Strategic alignment between clinical leadership and administrative operations is inconsistent, which is leading to duplicated initiative spend and slow adoption of transformation programs.\n\nHelp me rewrite this for the board. Keep the facts, cut the fat.",
+      "expected_output": "A tightened rewrite of the 3 bullets in concise executive prose — short declarative claims, quantitative, active voice, no redundant explanation. The slide structure should be preserved. The skill should not invent new facts but may reorganize emphasis.",
+      "assertions": [
+        {
+          "name": "bullets-are-shorter",
+          "description": "Each rewritten bullet is materially shorter than the original (ideally under 20 words each)",
+          "type": "qualitative"
+        },
+        {
+          "name": "key-numbers-preserved",
+          "description": "Key quantitative facts are preserved: 12% to 31% agency labor, $8M waste, 14 systems",
+          "type": "qualitative"
+        },
+        {
+          "name": "no-new-facts-invented",
+          "description": "The rewrite does not introduce claims or numbers not present in the original",
+          "type": "qualitative"
+        },
+        {
+          "name": "active-voice-and-claims-led",
+          "description": "Bullets lead with the outcome or problem, not the explanation",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm building a 3-slide 'Why Now' section for a private equity client considering a platform acquisition in the industrial automation space. The narrative needs to convince the investment committee that the timing is right. Here's what I know: interest rates are starting to come down which improves deal financing; there are 3 distressed acquisition targets in the market right now that fit the thesis; labor shortages in manufacturing are accelerating automation adoption; and the leading platform player just raised a Series D which means the window to acquire at reasonable multiples is closing. How do I sequence and frame this as a compelling 'Why Now' story across 3 slides?",
+      "expected_output": "A narrative sequence for 3 slides with a clear 'Why Now' arc: each slide's job named, the sequencing logic explained, a content map showing which facts go on which slide, and draft copy in executive style. The skill should flag that it needs the template before building, then proceed to structure the narrative.",
+      "assertions": [
+        {
+          "name": "narrative-arc-is-logical",
+          "description": "The 3-slide sequence has a clear escalating logic — e.g., macro conditions → market signals → urgency/window closing",
+          "type": "qualitative"
+        },
+        {
+          "name": "each-slide-has-named-job",
+          "description": "Each slide in the proposed sequence has an explicitly named job (not just a title)",
+          "type": "qualitative"
+        },
+        {
+          "name": "all-four-inputs-used",
+          "description": "All four provided inputs (rates, distressed targets, labor shortage, Series D) appear in the outline",
+          "type": "qualitative"
+        },
+        {
+          "name": "executive-copy-quality",
+          "description": "Draft copy is concise, claim-oriented bullets — not explanatory paragraphs",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "action": "search",
+  "skill_count": 10,
+  "skills": [
+    {
+      "name": "executive-slide-builder",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-claude-help",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-brand-identity",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-capability-map",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-html-slides",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-legal-drafting",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-pdf-creator",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-pptx",
+      "version": "v1.1.0",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-premier-proposal",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    },
+    {
+      "name": "metis-whitepaper",
+      "version": "v1.0.1",
+      "installed": true,
+      "summary": ""
+    }
+  ]
+}

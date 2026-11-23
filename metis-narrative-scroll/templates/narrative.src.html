@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<!-- The edition. Change this ONE line each time you start a new issue:
+     build.py reads it, writes it everywhere it appears on the page, and names
+     the output file from it, so a previous edition is never overwritten.
+     For a one-off with no edition, put the subject here and it names the file. -->
+<meta name="edition" content="August 2026">
+<meta name="description" content="__DESCRIPTION__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>__THEME__</style>
+</head>
+<body>
+__SPRITE__
+
+<!-- ============================== masthead ==============================
+     Thin, fixed, appears once the hero is behind you. Its lower edge is the
+     read progress bar. The <img> is bare: .mast img sizes it. -->
+<header class="mast" id="mast">
+  <div class="mast-in">
+    <img src="__LOGO_WHITE__" alt="Metis Strategy">
+    <span class="mast-t">__KICKER__ <span style="color:rgba(255,255,255,.4)">/</span> __EDITION_SHORT__</span>
+  </div>
+  <i class="mast-bar" id="mastBar"></i>
+</header>
+
+<!-- ================================ hero ================================
+     The one screen that has to earn the scroll. Say what this is and who it
+     is for in the first two lines. id="top" is load-bearing: the masthead
+     watches it to decide when to appear. -->
+<section class="hero deep" id="top">
+  <div class="wrap hero-in">
+    <img class="logo" data-anim="up" src="__LOGO_WHITE__" alt="Metis Strategy">
+    <h1 data-anim="up" data-delay="60">__HEADLINE_LEAD__<br>__HEADLINE_REST__ <b>__HEADLINE_EMPHASIS__</b>.</h1>
+    <p class="lede" data-anim="up" data-delay="130">__LEDE__</p>
+    <p class="lede" data-anim="up" data-delay="190">__LEDE_SECONDARY__</p>
+    <div class="dateline" data-anim="up" data-delay="250">
+      <span><b>__EDITION__</b></span>
+      <span>__DATELINE_META__</span>
+    </div>
+    <p class="byline" data-anim="up" data-delay="300">__BYLINE__</p>
+  </div>
+</section>
+
+<!-- ============================ what's inside ===========================
+     Rows, never a card grid. Each row IS the jump control for its section,
+     so the contents list and the navigation are one object. -->
+<div class="wrap glance" id="inside">
+  <h2 class="lbl" data-anim="up">Inside this note</h2>
+  <div data-stagger="70">
+    <button class="g-row" data-anim="up" data-jump="section-one">
+      <span class="g-i"><svg class="icn"><use href="#i-compass"/></svg></span>
+      <span>
+        <span class="g-n">__SECTION_ONE_NAME__</span>
+        <span class="g-d">__SECTION_ONE_BLURB__</span>
+      </span>
+      <span class="g-go">Read <svg class="icn"><use href="#i-arrow-right"/></svg></span>
+    </button>
+    <button class="g-row" data-anim="up" data-jump="section-two">
+      <span class="g-i"><svg class="icn"><use href="#i-users-round"/></svg></span>
+      <span>
+        <span class="g-n">__SECTION_TWO_NAME__</span>
+        <span class="g-d">__SECTION_TWO_BLURB__</span>
+      </span>
+      <span class="g-go">Read <svg class="icn"><use href="#i-arrow-right"/></svg></span>
+    </button>
+  </div>
+</div>
+
+<!-- ========================= 1. a light section =========================
+     data-rail names it in the section rail. Drop the attribute and the
+     section stays on the page but out of the rail.
+
+     .eyebrow is the STATUS line: it carries the Metis triangle and a hairline
+     that draws itself in. It is information ("Live", "In test"), never a
+     category label like "OVERVIEW". -->
+<section class="proj" id="section-one" data-rail="__SECTION_ONE_RAIL__">
+  <div class="wrap wide proj-in">
+    <span class="eyebrow" data-anim="up">__SECTION_ONE_STATUS__</span>
+    <h2 data-anim="up" data-delay="60">__SECTION_ONE_NAME__</h2>
+    <p class="lede" data-anim="up" data-delay="110">__SECTION_ONE_LEDE__</p>
+
+    <!-- What it does, then why that matters. A plain <h3> is already the
+         uppercase tracked label; it needs no class. .body caps at 52ch and
+         the measure does the readability work, so add no container. -->
+    <div class="two">
+      <div class="blk" data-anim="up" data-delay="60">
+        <h3>What it does</h3>
+        <p class="body">__SECTION_ONE_WHAT__</p>
+      </div>
+      <div class="blk" data-anim="up" data-delay="140">
+        <h3>Why it matters</h3>
+        <p class="body">__SECTION_ONE_WHY__</p>
+      </div>
+    </div>
+
+    <!-- The stat strip. Two to four facts, counted up on arrival. Kept off
+         the display scale so it reads as a fact strip, not a hero metric. -->
+    <div class="figs" data-stagger="90">
+      <div class="fig" data-anim="up">
+        <div class="fig-v fig-n" data-count="0">0</div>
+        <div class="fig-l">__STAT_ONE_LABEL__</div>
+      </div>
+      <div class="fig" data-anim="up">
+        <div class="fig-v fig-n" data-count="0">0</div>
+        <div class="fig-l">__STAT_TWO_LABEL__</div>
+      </div>
+      <div class="fig" data-anim="up">
+        <div class="fig-v fig-n" data-count="0">0</div>
+        <div class="fig-l">__STAT_THREE_LABEL__</div>
+      </div>
+    </div>
+
+    <!-- A REAL capture of the real thing, framed in the page's own hairline
+         rather than fake browser chrome. Never a mockup. -->
+    <div class="shot" data-anim="clip" data-delay="40">
+      <div class="shot-top">
+        <span class="shot-dot"></span>__SHOT_ONE_CAPTION__
+      </div>
+      <figure><img src="__SHOT_ONE__" alt="__SHOT_ONE_ALT__"></figure>
+      <figcaption>__SHOT_ONE_FIGCAPTION__</figcaption>
+    </div>
+
+    <!-- The bold clause is scannable on its own: someone reading only the
+         bold text should still get the plan. -->
+    <div class="next" data-anim="up">
+      <h3>What happens next</h3>
+      <ul data-stagger="80">
+        <li data-anim="up">
+          <span class="next-i"><svg class="icn"><use href="#i-target"/></svg></span>
+          <span><b>__NEXT_ONE_TITLE__</b> __NEXT_ONE_BODY__</span>
+        </li>
+        <li data-anim="up">
+          <span class="next-i"><svg class="icn"><use href="#i-notebook-pen"/></svg></span>
+          <span><b>__NEXT_TWO_TITLE__</b> __NEXT_TWO_BODY__</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="open-row" data-anim="up">
+      <a class="btn btn-green" href="__SECTION_ONE_URL__" target="_blank" rel="noopener">
+        __SECTION_ONE_CTA__ <svg class="icn"><use href="#i-arrow-up-right"/></svg>
+      </a>
+      <span class="open-hint">__SECTION_ONE_HINT__</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. a tinted section (.alt) ======================
+     Same structure on the card ground, so consecutive sections separate
+     without inventing a new component. Use .proj.deep for the one that
+     should land hardest. -->
+<section class="proj alt" id="section-two" data-rail="__SECTION_TWO_RAIL__">
+  <div class="wrap wide proj-in">
+    <span class="eyebrow" data-anim="up">__SECTION_TWO_STATUS__</span>
+    <h2 data-anim="up" data-delay="60">__SECTION_TWO_NAME__</h2>
+    <p class="lede" data-anim="up" data-delay="110">__SECTION_TWO_LEDE__</p>
+
+    <div class="two">
+      <div class="blk" data-anim="up" data-delay="60">
+        <h3>What it does</h3>
+        <p class="body">__SECTION_TWO_WHAT__</p>
+      </div>
+      <div class="blk" data-anim="up" data-delay="140">
+        <h3>Why it matters</h3>
+        <p class="body">__SECTION_TWO_WHY__</p>
+      </div>
+    </div>
+
+    <!-- One stat on its own. It keeps the same full width rule as a three up
+         strip; only the CONTENT is capped. Number and label share a baseline
+         so a lone fact reads as a sentence. -->
+    <div class="figs one">
+      <div class="fig" data-anim="up">
+        <div class="fig-v fig-n" data-count="0">0</div>
+        <div class="fig-l">__STAT_SOLO_LABEL__</div>
+      </div>
+    </div>
+
+    <!-- The honest caveat. A subtle brand tint, NO left accent bar and NO
+         uppercase label, because both read as machine written. Use it where a
+         capability exists but is not live, or a number needs qualifying. -->
+    <div class="note" data-anim="up">
+      <svg class="icn"><use href="#i-clock"/></svg>
+      <span>__NOTE_BODY__</span>
+    </div>
+
+    <div class="open-row" data-anim="up">
+      <a class="btn btn-green" href="__SECTION_TWO_URL__" target="_blank" rel="noopener">
+        __SECTION_TWO_CTA__ <svg class="icn"><use href="#i-arrow-up-right"/></svg>
+      </a>
+      <span class="open-hint">__SECTION_TWO_HINT__</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== closing ===============================
+     Name the ONE thing to open first and why. A closing band with equal links
+     and no recommendation gets none of them clicked. -->
+<section class="band deep" id="close" data-rail="Where to start">
+  <div class="wrap wide band-in">
+    <h2 data-anim="up">__CLOSING_HEADLINE__</h2>
+    <p class="body" data-anim="up" data-delay="120">__CLOSING_BODY__</p>
+
+    <div class="band-links" data-stagger="70">
+      <a class="band-l" data-anim="up" href="__SECTION_ONE_URL__" target="_blank" rel="noopener">
+        __SECTION_ONE_NAME__ <svg class="icn"><use href="#i-arrow-up-right"/></svg></a>
+      <a class="band-l" data-anim="up" href="__SECTION_TWO_URL__" target="_blank" rel="noopener">
+        __SECTION_TWO_NAME__ <svg class="icn"><use href="#i-arrow-up-right"/></svg></a>
+    </div>
+
+    <div class="colophon">
+      <span><b>__TITLE__</b>, __EDITION__</span>
+      <span class="sep">/</span>
+      <span>__COLOPHON_BYLINE__</span>
+      <span class="sep">/</span>
+      <span>__COLOPHON_RIGHTS__</span>
+    </div>
+  </div>
+</section>
+
+<!-- The rail builds itself from every [data-rail] section. Nothing to author. -->
+<nav class="rail" id="rail" aria-label="Jump to a section of this note"></nav>
+
+<script>__ENGINE__</script>
+</body>
+</html>

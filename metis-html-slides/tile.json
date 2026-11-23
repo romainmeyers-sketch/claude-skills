@@ -1,0 +1,11 @@
+{
+  "name": "metis-strategy/metis-html-slides",
+  "version": "2.0.9",
+  "private": false,
+  "summary": "Generate interactive HTML presentations with sidebar navigation, scrollable sections, and 40+ typography-driven components. Supports Metis branding with auto-embedded logo and client brand extraction from PPTX templates. Output is a self-contained HTML file viewable in any browser.",
+  "skills": {
+    "metis-html-slides": {
+      "path": "SKILL.md"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "metis-strategy/metis-claude-help",
+  "version": "0.1.1",
+  "scope": "firm",
+  "private": false,
+  "summary": "Central hub for skill registry, FAQ, tips, and bug reporting",
+  "skills": {
+    "metis-claude-help": {
+      "path": "SKILL.md"
+    }
+  }
+}

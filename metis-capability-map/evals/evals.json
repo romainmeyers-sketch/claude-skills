@@ -1,0 +1,220 @@
+{
+  "skill_name": "metis-capability-map",
+  "evals": [
+    {
+      "id": 1,
+      "name": "hospitality-xlsx-guest-journey",
+      "prompt": "Create a business capability map for a luxury hotel chain with 15 properties. They have a guest journey that goes: Discovery → Booking → Pre-Arrival → Arrival → Stay → Departure → Post-Stay Loyalty. Output as XLSX and save to C:/temp/capability-map-test/luxury_hotel_capability_map.xlsx. Include maturity scoring columns but leave them empty for workshop use.",
+      "expected_output": "An XLSX file with 3 sheets (Capability Map, Summary, Journey ↔ Value Chain). Pillar 1 is named 'Guest Journey' (not 'Customer Journey'). The Capability Map sheet has columns for Pillar, L1, L2, L3, Shared With, Maturity (1-5), Maturity Label. All three pillars represented. Maturity column has data validation dropdowns but no pre-filled scores. Conditional formatting wired for heat map colors. Shared capabilities have specific cross-references (e.g., 'Journey: Booking') not just 'Yes'.",
+      "assertions": [
+        {
+          "name": "file_exists",
+          "description": "XLSX file was created at the specified path",
+          "type": "file_exists",
+          "path": "C:/temp/capability-map-test/luxury_hotel_capability_map.xlsx"
+        },
+        {
+          "name": "minimum_file_size",
+          "description": "XLSX is at least 10KB",
+          "type": "file_size_gte",
+          "path": "C:/temp/capability-map-test/luxury_hotel_capability_map.xlsx",
+          "bytes": 10000
+        },
+        {
+          "name": "uses_openpyxl",
+          "description": "Script uses openpyxl for XLSX generation",
+          "type": "script_contains",
+          "pattern": "openpyxl"
+        },
+        {
+          "name": "uses_guest_journey_not_customer",
+          "description": "Hospitality should use 'Guest Journey' pillar name",
+          "type": "script_contains",
+          "pattern": "Guest Journey"
+        },
+        {
+          "name": "has_value_chain_pillar",
+          "description": "Script includes Value Chain pillar",
+          "type": "script_contains",
+          "pattern": "Value Chain"
+        },
+        {
+          "name": "has_supporting_pillar",
+          "description": "Script includes Supporting Domains pillar",
+          "type": "script_contains",
+          "pattern": "Supporting"
+        },
+        {
+          "name": "has_data_validation",
+          "description": "Script sets up data validation for maturity dropdowns",
+          "type": "script_contains",
+          "pattern": "DataValidation"
+        },
+        {
+          "name": "has_conditional_formatting",
+          "description": "Script applies conditional formatting for heat map",
+          "type": "script_contains",
+          "pattern": "conditional_formatting"
+        },
+        {
+          "name": "uses_correct_python_path",
+          "description": "Script is executed using the full Python path",
+          "type": "script_contains",
+          "pattern": "Python312"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "b2b-saas-html-customer-journey",
+      "prompt": "Generate a capability map for a B2B SaaS company that sells HR tech software. Their customer journey: Awareness → Trial → Purchase → Onboarding → Adoption → Expansion → Renewal. Output as a standalone interactive HTML file saved to C:/temp/capability-map-test/hr_saas_capability_map.html. No maturity scoring.",
+      "expected_output": "A standalone HTML file with no external dependencies. Pillar 1 is named 'Customer Journey' (not 'Guest Journey' — this is B2B SaaS). Includes collapsible tree, search/filter bar, color-coded pillar backgrounds. Shared capabilities have colored cross-reference badges with specific L1 names. No maturity badges since not requested. Print-friendly CSS included.",
+      "assertions": [
+        {
+          "name": "file_exists",
+          "description": "HTML file was created at the specified path",
+          "type": "file_exists",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html"
+        },
+        {
+          "name": "minimum_file_size",
+          "description": "HTML is at least 5KB",
+          "type": "file_size_gte",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "bytes": 5000
+        },
+        {
+          "name": "uses_customer_journey_not_guest",
+          "description": "B2B SaaS should use 'Customer Journey' not 'Guest Journey'",
+          "type": "file_contains",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "pattern": "Customer Journey"
+        },
+        {
+          "name": "does_not_use_guest_journey",
+          "description": "B2B SaaS should NOT use 'Guest Journey'",
+          "type": "file_not_contains",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "pattern": "Guest Journey"
+        },
+        {
+          "name": "no_external_dependencies",
+          "description": "HTML file does not link to external CSS or JS",
+          "type": "file_not_contains",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "pattern": "href=\"http"
+        },
+        {
+          "name": "has_search_bar",
+          "description": "HTML includes a search/filter input",
+          "type": "file_contains",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "pattern": "search"
+        },
+        {
+          "name": "has_print_css",
+          "description": "HTML includes print media query",
+          "type": "file_contains",
+          "path": "C:/temp/capability-map-test/hr_saas_capability_map.html",
+          "pattern": "@media print"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "telecom-pptx-subscriber-journey",
+      "prompt": "Build a capability map deck for a telecommunications company that provides fiber optic internet and mobile services. Output as PPTX saved to C:/temp/capability-map-test/telecom_capability_map.pptx. Include maturity scoring structure but leave scores empty.",
+      "expected_output": "A PPTX deck following the Metis design system (Dark Navy #20206E, Mint #3BDAC0, Calibri). Pillar 1 is named 'Subscriber Journey' (not 'Guest Journey' or 'Customer Journey' — this is telecom). Includes cover, agenda, conceptual model, journey overview with horizontal flow, detail slides per L1, section dividers, maturity summary placeholder, and closing slide.",
+      "assertions": [
+        {
+          "name": "file_exists",
+          "description": "PPTX file was created at the specified path",
+          "type": "file_exists",
+          "path": "C:/temp/capability-map-test/telecom_capability_map.pptx"
+        },
+        {
+          "name": "minimum_file_size",
+          "description": "PPTX is at least 30KB",
+          "type": "file_size_gte",
+          "path": "C:/temp/capability-map-test/telecom_capability_map.pptx",
+          "bytes": 30000
+        },
+        {
+          "name": "uses_subscriber_journey",
+          "description": "Telecom should use 'Subscriber Journey' pillar name",
+          "type": "script_contains",
+          "pattern": "Subscriber Journey"
+        },
+        {
+          "name": "uses_metis_navy",
+          "description": "Script uses the Metis Dark Navy color",
+          "type": "script_contains",
+          "pattern": "20206E"
+        },
+        {
+          "name": "uses_metis_mint",
+          "description": "Script uses the Metis Mint color",
+          "type": "script_contains",
+          "pattern": "3BDAC0"
+        },
+        {
+          "name": "uses_correct_python_path",
+          "description": "Script is executed using the full Python path",
+          "type": "script_contains",
+          "pattern": "Python312"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "refine-existing-map",
+      "prompt": "I have an existing capability map that I'd like you to improve. Here's what we have so far:\n\nPillar: Customer Journey\n- L1: Awareness\n  - L2: Marketing\n    - L3: Ads\n    - L3: Social media\n- L1: Purchase\n  - L2: Sales\n    - L3: Pricing\n\nWe're a mid-size hotel chain. Can you identify gaps, suggest improvements, and output the refined map as XLSX to C:/temp/capability-map-test/refined_hotel_map.xlsx?",
+      "expected_output": "An XLSX file that corrects the pillar name from 'Customer Journey' to 'Guest Journey' (since this is hospitality), preserves the user's original capability names where appropriate, adds missing journey stages (e.g., Booking, Check-in, Stay, Check-out, Post-Stay), deepens existing L2/L3s, adds Value Chain and Supporting pillars that were missing entirely, and includes a gap analysis. The output should distinguish between original vs. added capabilities.",
+      "assertions": [
+        {
+          "name": "file_exists",
+          "description": "XLSX file was created at the specified path",
+          "type": "file_exists",
+          "path": "C:/temp/capability-map-test/refined_hotel_map.xlsx"
+        },
+        {
+          "name": "minimum_file_size",
+          "description": "XLSX is at least 10KB",
+          "type": "file_size_gte",
+          "path": "C:/temp/capability-map-test/refined_hotel_map.xlsx",
+          "bytes": 10000
+        },
+        {
+          "name": "corrects_to_guest_journey",
+          "description": "Script corrects pillar name to Guest Journey for hospitality",
+          "type": "script_contains",
+          "pattern": "Guest Journey"
+        },
+        {
+          "name": "preserves_original_names",
+          "description": "Script preserves at least some of the user's original capability names",
+          "type": "script_contains",
+          "pattern": "Awareness"
+        },
+        {
+          "name": "adds_value_chain",
+          "description": "Script adds Value Chain pillar that was missing from input",
+          "type": "script_contains",
+          "pattern": "Value Chain"
+        },
+        {
+          "name": "adds_supporting",
+          "description": "Script adds Supporting Domains pillar",
+          "type": "script_contains",
+          "pattern": "Supporting"
+        },
+        {
+          "name": "uses_openpyxl",
+          "description": "Script uses openpyxl",
+          "type": "script_contains",
+          "pattern": "openpyxl"
+        }
+      ]
+    }
+  ]
+}

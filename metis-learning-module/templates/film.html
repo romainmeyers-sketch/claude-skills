@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Film</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+  :root{--dk:#0E3033;--dk2:#07201F;--or:#FB8328;--tl:#36C6C6;--mint:#B2FFF6;--ink:#E7EFF1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--dk);color:#fff;overflow:hidden;
+    font-family:"Avenir Next LT Pro","Avenir Next","Nunito Sans",Arial,sans-serif}
+  body:not(.embed){overflow:auto}
+  body:not(.embed) .shell{max-width:1280px;margin:24px auto;padding:0 16px}
+  .stage{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+  body:not(.embed) .stage{border-radius:14px}
+  canvas{display:block;width:100%;height:100%}
+
+  .cap{position:absolute;left:0;right:0;bottom:56px;display:flex;justify-content:center;
+    padding:0 6%;pointer-events:none}
+  .cap span{background:rgba(5,18,20,.82);border-radius:6px;padding:9px 15px;
+    font-size:clamp(13px,1.5vw,19px);line-height:1.4;text-align:center;max-width:46em}
+  .cap.off{display:none}
+
+  .cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:14px;cursor:pointer;
+    background:radial-gradient(ellipse at center,rgba(14,48,51,.35),rgba(14,48,51,.9))}
+  .cover.hide{display:none}
+  .cover .big{width:84px;height:84px;border-radius:50%;border:0;background:var(--or);
+    display:grid;place-items:center;cursor:pointer;
+    box-shadow:0 0 0 10px rgba(251,131,40,.2),0 0 50px rgba(251,131,40,.45)}
+  .cover .ttl{font-size:clamp(16px,2.6vw,30px);font-weight:800;text-align:center;padding:0 20px;max-width:22ch}
+  .cover .dur{font-size:13px;color:var(--mint)}
+
+  .ctrl{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;
+    padding:10px 12px;background:linear-gradient(transparent,rgba(5,20,22,.85));
+    opacity:0;transition:opacity .25s}
+  .stage:hover .ctrl,.ctrl:focus-within,.ctrl.show{opacity:1}
+  .ctrl button{font:inherit;font-size:12px;font-weight:700;color:#fff;cursor:pointer;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    border-radius:7px;padding:6px 9px}
+  .ctrl button.on{background:rgba(54,198,198,.35);border-color:var(--tl)}
+  #pp{width:36px}
+  #tm{font-size:12px;font-variant-numeric:tabular-nums;color:#dfe9ea;min-width:84px}
+  .ctrl input[type=range]{flex:1;accent-color:var(--or);min-width:60px}
+  @media (prefers-reduced-motion:reduce){ .cover .big{box-shadow:none} }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="stage" id="stage">
+    <canvas id="c" width="1920" height="1080"></canvas>
+    <div class="cap" id="cap"><span></span></div>
+    <div class="cover" id="cover">
+      <button class="big" aria-label="Play"><svg width="30" height="34" viewBox="0 0 34 38"><path d="M4 2l28 17L4 36z" fill="#1A0B00"/></svg></button>
+      <div class="ttl" id="ttl"></div>
+      <div class="dur" id="dur"></div>
+    </div>
+    <div class="ctrl" id="ctrl">
+      <button id="pp" aria-label="Play">&#9654;</button><span id="tm">0:00</span>
+      <input type="range" id="sc" min="0" max="60" step="0.01" value="0" aria-label="Timeline">
+      <button id="cc" class="on" aria-pressed="true">CC</button>
+      <button id="vo" class="on" aria-pressed="true">Voice</button>
+      <button id="mu" class="on" aria-pressed="true">Music</button>
+      <button id="fs" aria-label="Fullscreen">&#9974;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===========================================================================
+   A film in the format first built for POM 101. The format carries any
+   subject: the scenes below are an example, not a fixture.
+
+   You write SCENES. You never write a timeline: t0 and the total length are
+   derived, and the captions are derived from the same narration lines the
+   voice reads, so the two cannot drift apart.
+
+   The one rule that governs everything below: draw(t) is a pure function of
+   t. Given the same t it must paint the same frame, with no dependence on
+   elapsed real time, Math.random or Date.now. That is what lets a renderer
+   walk the film frame by frame and get a clean video out, and it is the
+   first thing to break if you animate by accumulating deltas.
+   =========================================================================== */
+
+var W = 1920, H = 1080;
+var cv = document.getElementById("c"), g = cv.getContext("2d");
+var DK = "#0E3033", OR = "#FB8328", TL = "#36C6C6", MINT = "#B2FFF6", INK = "#E7EFF1";
+
+/* ---- small deterministic helpers ---------------------------------------- */
+var E = {
+  out:  function(p){ return 1 - Math.pow(1 - p, 3); },
+  in:   function(p){ return p * p * p; },
+  io:   function(p){ return p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2; },
+  pop:  function(p){ return p < 0 ? 0 : p > 1 ? 1 : 1 - Math.pow(1 - p, 4); }
+};
+function lerp(a, b, p){ return a + (b - a) * p; }
+function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
+/* A seeded generator, so "random" positions are the same on every frame. */
+function rnd(seed){ var s = seed || 1; return function(){ s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
+function text(s, x, y, size, opt){
+  opt = opt || {};
+  g.save();
+  g.globalAlpha = opt.a == null ? 1 : opt.a;
+  g.fillStyle = opt.c || INK;
+  g.font = (opt.w || 600) + " " + size + 'px "Avenir Next LT Pro","Nunito Sans",Arial';
+  g.textAlign = opt.align || "center";
+  g.textBaseline = opt.base || "middle";
+  g.fillText(s, x, y);
+  g.restore();
+}
+function rect(x, y, w, h, c, r, a){
+  g.save();
+  g.globalAlpha = a == null ? 1 : a;
+  g.fillStyle = c;
+  g.beginPath();
+  if (g.roundRect) g.roundRect(x, y, w, h, r || 0); else g.rect(x, y, w, h);
+  g.fill();
+  g.restore();
+}
+function line(x1, y1, x2, y2, c, w, a){
+  g.save();
+  g.globalAlpha = a == null ? 1 : a;
+  g.strokeStyle = c; g.lineWidth = w || 2; g.lineCap = "round";
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke();
+  g.restore();
+}
+
+/* ===========================================================================
+   SCENES
+   Replace these with the film's own. Keep the shape.
+     name  a label for debugging
+     d     seconds this scene holds, five to nine
+     vo    the narrated line, which is also the caption
+     draw  (p, t) where p is 0..1 inside the scene
+   For a scene with two lines use vo1, vo2 and vo2At instead of vo.
+   =========================================================================== */
+var SCENES = [
+  { name:"Title", d:5,
+    vo:"Every day, the work moves through more hands than anyone planned.",
+    draw:function(p){
+      bg(p);
+      text("Teams persist.", W/2, H/2 - 60, 110, { a:E.pop(p*2.2), w:400 });
+      text("Work flows to them.", W/2, H/2 + 70, 110, { a:E.pop(p*2.2 - .5), w:400, c:MINT });
+    } },
+
+  { name:"The handoff chain", d:8,
+    vo1:"In a project model, teams form around the work.",
+    vo2:"Every handoff adds time, and the feedback comes late.",
+    vo2At:4.2,
+    draw:function(p){
+      bg(p);
+      var names = ["Request", "Plan", "Build", "Run"], n = names.length;
+      for (var i = 0; i < n; i++){
+        var a = E.pop(p * 3 - i * .45);
+        var x = 300 + i * 440;
+        rect(x - 150, H/2 - 90, 300, 180, "#113A3C", 10, a);
+        text(names[i], x, H/2, 44, { a:a, w:600 });
+        if (i < n - 1){
+          var la = E.pop(p * 3 - i * .45 - .3);
+          line(x + 160, H/2, x + 280, H/2, OR, 6, la);
+        }
+      }
+      text("every handoff adds time", W/2, H/2 + 230, 40,
+           { a:E.pop(p * 2 - 1.1), c:"#9FB9BA", w:400 });
+    } },
+
+  { name:"The team stays", d:7,
+    vo:"The product model flips that. The team stays, and the work comes to it.",
+    draw:function(p){
+      bg(p);
+      var cx = W/2, cy = H/2 + 20;
+      rect(cx - 230, cy - 120, 460, 240, "#11484A", 14, 1);
+      text("One standing team", cx, cy - 30, 52, { w:600 });
+      text("owns it end to end", cx, cy + 40, 44, { c:MINT, w:400 });
+      var r = rnd(7);
+      for (var i = 0; i < 7; i++){
+        var ang = r() * Math.PI * 2;
+        var d0 = 760, d1 = 300;
+        var pp = clamp(p * 1.6 - i * .08, 0, 1);
+        var d = lerp(d0, d1, E.out(pp));
+        var x = cx + Math.cos(ang) * d * 1.5, y = cy + Math.sin(ang) * d * .7;
+        g.save(); g.globalAlpha = .9 * pp; g.fillStyle = TL;
+        g.beginPath(); g.arc(x, y, 12, 0, 7); g.fill(); g.restore();
+      }
+    } },
+
+  { name:"Close", d:5,
+    vo:"Teams persist. Work flows to them.",
+    draw:function(p){
+      bg(p);
+      text("Teams persist.", W/2, H/2 - 40, 96, { a:E.pop(p*2.4), w:400 });
+      text("Work flows to them.", W/2, H/2 + 80, 96, { a:E.pop(p*2.4 - .4), w:400, c:MINT });
+    } }
+];
+
+/* The backdrop, shared by every scene so the film reads as one piece. */
+function bg(p){
+  var grd = g.createLinearGradient(0, 0, 0, H);
+  grd.addColorStop(0, "#0E3033"); grd.addColorStop(1, "#07201F");
+  g.fillStyle = grd; g.fillRect(0, 0, W, H);
+  g.save(); g.globalAlpha = .07; g.strokeStyle = TL; g.lineWidth = 1;
+  for (var x = 0; x < W; x += 120){ g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+  g.restore();
+  line(0, H - 4, W * clamp(p, 0, 1), H - 4, OR, 4, .5);
+}
+
+/* ===========================================================================
+   Derived: timings and captions. Do not hand-write either.
+   =========================================================================== */
+var TOTAL = 0;
+SCENES.forEach(function(s){ s.t0 = TOTAL; TOTAL += s.d; });
+
+var CUES = [];
+SCENES.forEach(function(s){
+  if (s.vo2){ CUES.push({ t:s.t0 + .1, text:s.vo1 }, { t:s.t0 + s.vo2At, text:s.vo2 }); }
+  else       { CUES.push({ t:s.t0 + .1, text:s.vo }); }
+});
+
+var TITLE = SCENES[SCENES.length - 1].vo || "Film";
+var VID = (location.search.match(/[?&]v=([^&]+)/) || [])[1] || "film";
+if (/[?&]embed=1/.test(location.search)) document.body.classList.add("embed");
+
+/* ===========================================================================
+   Drawing
+   =========================================================================== */
+function sceneAt(t){
+  for (var i = SCENES.length - 1; i >= 0; i--) if (t >= SCENES[i].t0) return SCENES[i];
+  return SCENES[0];
+}
+function draw(t){
+  t = clamp(t, 0, TOTAL - .001);
+  var s = sceneAt(t);
+  s.draw(clamp((t - s.t0) / s.d, 0, 1), t);
+}
+function capAt(t){
+  var c = null;
+  for (var i = 0; i < CUES.length; i++) if (CUES[i].t <= t) c = CUES[i];
+  return c ? c.text : "";
+}
+
+/* ===========================================================================
+   Sound. Music is synthesized so the film stays one file. Voice uses
+   speechSynthesis, which is fine for review and internal use; a client-facing
+   film gets recorded clips, and then VOC below carries their durations so
+   each scene stretches to fit its clip.
+   =========================================================================== */
+var VOC = null;   // e.g. { d:[4.18, 5.85, 4.97, 5.16] }, one per cue
+if (VOC && VOC.d && VOC.d.length === CUES.length){
+  /* Fit the picture to the recorded voice rather than the other way round. */
+  var acc = 0;
+  SCENES.forEach(function(s, i){
+    var clips = s.vo2 ? 2 : 1, need = 0;
+    for (var k = 0; k < clips; k++) need += VOC.d[Math.min(CUES.length - 1, i + k)] + .45;
+    s.d = Math.max(s.d, need);
+  });
+  TOTAL = 0;
+  SCENES.forEach(function(s){ s.t0 = TOTAL; TOTAL += s.d; });
+  CUES.length = 0;
+  SCENES.forEach(function(s){
+    if (s.vo2) CUES.push({ t:s.t0 + .1, text:s.vo1 }, { t:s.t0 + s.vo2At, text:s.vo2 });
+    else CUES.push({ t:s.t0 + .1, text:s.vo });
+  });
+}
+
+var AC = null, musicBus = null;
+function initAudio(){
+  if (AC) return;
+  try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return; }
+  musicBus = AC.createGain();
+  musicBus.gain.value = 0;
+  musicBus.connect(AC.destination);
+}
+/* A slow bed, scheduled once, deterministic so the offline render matches. */
+function schedMusic(ctx, bus, total){
+  var notes = [196, 233.08, 261.63, 293.66];
+  for (var i = 0; i * 2 < total + 2; i++){
+    var o = ctx.createOscillator(), gn = ctx.createGain(), t0 = i * 2;
+    o.type = "sine";
+    o.frequency.value = notes[i % notes.length];
+    gn.gain.setValueAtTime(0, t0);
+    gn.gain.linearRampToValueAtTime(.13, t0 + .6);
+    gn.gain.linearRampToValueAtTime(0, t0 + 2.1);
+    o.connect(gn); gn.connect(bus);
+    o.start(t0); o.stop(t0 + 2.2);
+  }
+}
+var musicStarted = false;
+function startMusic(){
+  if (!AC || musicStarted) return;
+  musicStarted = true;
+  schedMusic(AC, musicBus, TOTAL);
+}
+
+var voiceOn = true, musicOn = true, ccOn = true;
+function say(s){
+  if (!voiceOn || !window.speechSynthesis) return;
+  try {
+    var u = new SpeechSynthesisUtterance(s);
+    u.rate = 1.0; u.pitch = 1;
+    speechSynthesis.speak(u);
+  } catch(e){}
+}
+function hush(){ try { speechSynthesis.cancel(); } catch(e){} }
+
+/* ===========================================================================
+   Transport
+   =========================================================================== */
+var t = 0, playing = false, last = null, prevT = -1, ended = false;
+var $ = function(id){ return document.getElementById(id); };
+
+function fmt(s){ return Math.floor(s/60) + ":" + String(Math.floor(s%60)).padStart(2, "0"); }
+
+function play(){
+  initAudio();
+  if (AC && AC.state === "suspended") AC.resume();
+  startMusic();
+  if (t >= TOTAL - .02) t = 0;
+  playing = true; ended = false; prevT = t - .2;
+  $("cover").classList.add("hide");
+  if (musicBus) musicBus.gain.setTargetAtTime(musicOn ? .3 : 0, AC.currentTime, .1);
+  post("play");
+}
+function pause(){
+  playing = false; hush();
+  if (musicBus && AC) musicBus.gain.setTargetAtTime(0, AC.currentTime, .06);
+}
+function seek(v){ t = clamp(v, 0, TOTAL - .001); prevT = t - .2; hush(); paint(); }
+function post(state){
+  try { parent.postMessage({ type:"film", state:state, v:VID }, "*"); } catch(e){}
+}
+
+function paint(){
+  draw(t);
+  $("sc").value = t;
+  $("tm").textContent = fmt(t) + " / " + fmt(TOTAL);
+  $("pp").innerHTML = playing ? "&#10073;&#10073;" : "&#9654;";
+  var el = $("cap");
+  el.classList.toggle("off", !ccOn);
+  el.firstElementChild.textContent = capAt(t);
+}
+
+function frame(now){
+  if (last == null) last = now;
+  var dt = Math.min(.1, (now - last) / 1000);
+  last = now;
+  if (playing){
+    t += dt;
+    if (t >= TOTAL){
+      t = TOTAL - .001;
+      pause();
+      if (!ended){ ended = true; post("ended"); }
+    }
+    for (var i = 0; i < CUES.length; i++){
+      if (CUES[i].t > prevT && CUES[i].t <= t) say(CUES[i].text);
+    }
+    prevT = t;
+  }
+  paint();
+  requestAnimationFrame(frame);
+}
+
+/* ===========================================================================
+   Render hooks. A renderer uses these instead of screen-recording, so the
+   output is clean at any resolution however slowly the page draws.
+   =========================================================================== */
+window.__FILMRENDER = {
+  total: TOTAL,
+  canvas: cv,
+  frame: function(tt){ draw(tt); },
+  audio: function(sr){
+    sr = sr || 48000;
+    var off = new OfflineAudioContext(2, Math.ceil((TOTAL + .5) * sr), sr);
+    var bus = off.createGain();
+    bus.gain.value = musicOn ? .3 : 0;
+    bus.connect(off.destination);
+    schedMusic(off, bus, TOTAL);
+    return off.startRendering();
+  }
+};
+window.__FILMSTATE = function(){
+  return { total:+TOTAL.toFixed(2), scenes:SCENES.map(function(s){ return +s.d.toFixed(2); }),
+           cues:CUES.length, t:+t.toFixed(2), playing:playing };
+};
+
+/* ===========================================================================
+   Wiring
+   =========================================================================== */
+$("ttl").textContent = TITLE;
+$("dur").textContent = fmt(TOTAL);
+$("sc").max = TOTAL;
+
+$("cover").addEventListener("click", play);
+$("pp").addEventListener("click", function(){ playing ? pause() : play(); });
+$("sc").addEventListener("input", function(e){ seek(parseFloat(e.target.value)); });
+$("cc").addEventListener("click", function(e){
+  ccOn = !ccOn; e.target.classList.toggle("on", ccOn);
+  e.target.setAttribute("aria-pressed", String(ccOn)); paint();
+});
+$("vo").addEventListener("click", function(e){
+  voiceOn = !voiceOn; e.target.classList.toggle("on", voiceOn);
+  e.target.setAttribute("aria-pressed", String(voiceOn));
+  if (!voiceOn) hush();
+});
+$("mu").addEventListener("click", function(e){
+  musicOn = !musicOn; e.target.classList.toggle("on", musicOn);
+  e.target.setAttribute("aria-pressed", String(musicOn));
+  if (musicBus && AC) musicBus.gain.setTargetAtTime(musicOn && playing ? .3 : 0, AC.currentTime, .08);
+});
+$("fs").addEventListener("click", function(){
+  var el = $("stage");
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if (el.requestFullscreen) el.requestFullscreen();
+});
+document.addEventListener("keydown", function(e){
+  if (e.code === "Space"){ e.preventDefault(); playing ? pause() : play(); }
+  if (e.key === "ArrowRight") seek(t + 5);
+  if (e.key === "ArrowLeft")  seek(t - 5);
+});
+
+/* The hub pauses the film when the learner leaves the step. A message from
+   the parent is a notification, not an instruction: only `cmd` is read. */
+window.addEventListener("message", function(e){
+  if (e.data && e.data.type === "film" && e.data.cmd === "pause") pause();
+});
+
+paint();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

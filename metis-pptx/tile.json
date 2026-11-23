@@ -1,0 +1,11 @@
+{
+  "name": "metis-strategy/metis-pptx",
+  "version": "4.5.0",
+  "private": false,
+  "summary": "Create or edit PowerPoint presentations. Dual-mode skill: (1) Editing mode preserves existing templates via Open XML unpack/edit/repack when an existing .pptx is provided. (2) Generation mode builds new Metis-branded decks native-layout-first, driving content through the template's 32 built-in slide layouts as the primary path, with a deck-type preset selector (readout, workshop, presentation, BD, assessment, exec) that sets density and variance dials up front, hand-built component recipes and the Timesaver library as fallbacks, and programmatic Lucide icon support. Portable asset resolution lets the skill run standalone from its bundled template or pick up the full brand asset set automatically when installed on a Metis machine. Includes brand extraction for client decks and visual QA via PowerPoint COM. Triggers on deck, slides, presentation, PPT, or any .pptx request.",
+  "skills": {
+    "metis-pptx": {
+      "path": "SKILL.md"
+    }
+  }
+}

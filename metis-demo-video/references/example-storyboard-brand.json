@@ -1,0 +1,335 @@
+{
+ "output_name": "bt-guide-demo-workday-sunrise",
+ "brand": {
+  "bg": "#081c42",
+  "glow1": "rgba(8,117,225,.45)",
+  "glow2": "rgba(255,161,38,.16)",
+  "accent": "#ff9a1f",
+  "muted": "#c9dbf5",
+  "font": "Inter",
+  "mesh1": "rgba(8,117,225,.85)",
+  "mesh2": "rgba(64,160,255,.55)",
+  "mesh3": "rgba(255,161,38,.42)",
+  "mesh-bg": "#081c42",
+  "accent-light": "#0050b3",
+  "sun1": "#0050b3",
+  "sun2": "#1477d6",
+  "sun3": "#6f8fe0",
+  "sun4": "#e9a98f",
+  "sun5": "#ff8a1f",
+  "blue": "#0050b3",
+  "blue-hi": "#1a74d4"
+ },
+ "pace": 0.82,
+ "music": {
+  "file": "assets/music.mp3",
+  "lift_on": "app_in"
+ },
+ "app": {
+  "page": "assets/app.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "url_label": "script.google.com/a/macros/workday.com/s/.../exec",
+  "fake_date": "2026-11-04T09:30:00",
+  "ready": "document.querySelector('#intro:not([hidden])')",
+  "setup_js": "\nconst who = {pm:'sam.taylor@workday.com', dm:'dan.okafor@workday.com', sl:'priya.shah@workday.com', dt:'kai.nguyen@workday.com', all:'priya.shah@workday.com'};\nconst c = window.__db.checks['Benefits'] = {};\n['#w0', '#w1'].forEach((w, i) => document.querySelectorAll(w + ' .action').forEach((a, j) => {\n  c[a.dataset.id] = {by: who[a.dataset.role], at: '2026-' + (i ? '10-' + (28 + j % 3) : '10-' + (21 + j % 3)) + 'T10:00:00'}; }));\ndocument.querySelectorAll('#launch .criteria li, #s1 .criteria li').forEach(li => c[li.dataset.id] = {by: 'priya.shah@workday.com', at: '2026-10-30T16:00:00'});\n['1f9e4ad5cc', '2da6ed6d1c', '85730ec9ed'].forEach(id => { const a = document.querySelector('[data-id=\"' + id + '\"]'); c[id] = {by: who[a.dataset.role], at: '2026-11-03T15:00:00'}; });\nconst ids = [...document.querySelectorAll('#launch [data-id], #s1 [data-id], #s2 [data-id]')].filter(li => li.querySelector('input[type=checkbox]')).map(li => li.dataset.id);\nconst others = {'Compensation': [30, 'jordan.lee@workday.com', '11-03'], 'Source to Pay': [24, 'maya.chen@workday.com', '11-02'], 'Talent Acquisition': [12, 'ines.garcia@workday.com', '10-30']};\nObject.keys(others).forEach(t => { const [n, by, d] = others[t]; const m = window.__db.checks[t] = {}; ids.slice(0, n).forEach(id => m[id] = {by: by, at: '2026-' + d + 'T11:00:00'}); window.__db.members[by] = window.__db.members[by] || {team: t, role: 'pm'}; });\n"
+ },
+ "scenes": [
+  {
+   "type": "beats",
+   "words": [
+    "14 pages.",
+    "11 teams.",
+    "One **Word document.**"
+   ],
+   "word_ms": 850,
+   "hold": 900
+  },
+  {
+   "type": "chat",
+   "bg": "mesh",
+   "channel": "# bt-rollout",
+   "subtitle": "BT Operating Model team",
+   "messages": [
+    {
+     "name": "Grace Crozier",
+     "color": "#f08c00",
+     "time": "4:12 PM",
+     "text": "If I check things off, is there a way for Rohan to see it? No, right?",
+     "wait": 1900
+    },
+    {
+     "name": "Rohan Ray",
+     "color": "#0875e1",
+     "time": "4:15 PM",
+     "text": "Not yet. Give us a day.",
+     "wait": 1300
+    },
+    {
+     "divider": "Next day",
+     "wait": 700
+    },
+    {
+     "name": "Rohan Ray",
+     "color": "#0875e1",
+     "time": "9:02 AM",
+     "text": "Here you go. One shared guide for every team:",
+     "card": {
+      "title": "BT Operating Model · Implementation Guide",
+      "url": "script.google.com · sign in with your Workday account"
+     },
+     "wait": 1600
+    }
+   ]
+  },
+  {
+   "type": "reveal",
+   "bg": "rise",
+   "wipe": true,
+   "intro": "Meet",
+   "name": "BT Operating Model",
+   "logo": "arc",
+   "pill": "Implementation Guide · One shared workspace",
+   "intro_ms": 1500,
+   "hold": 1300
+  },
+  {
+   "type": "device",
+   "bg": "sunrise",
+   "float": true,
+   "screen": "assets/screen_intro.png",
+   "hold": 1600
+  },
+  {
+   "type": "app",
+   "enter": "zoomout",
+   "steps": [
+    {
+     "caption": "First visit: pick your team and role",
+     "wait": 600
+    },
+    {
+     "focus": "#intro .intro-card",
+     "scale": 1.12,
+     "after": 900
+    },
+    {
+     "click": "[data-go=\"team\"]",
+     "after": 500
+    },
+    {
+     "focus": "#team-select",
+     "scale": 1.75,
+     "cy": 470
+    },
+    {
+     "select": [
+      "#team-select",
+      "Benefits"
+     ],
+     "after": 1100
+    },
+    {
+     "focus": "#intro .intro-card",
+     "scale": 1.12,
+     "ms": 800
+    },
+    {
+     "click": "#team-next",
+     "after": 500
+    },
+    {
+     "click": "#role-pick [data-pick=\"pm\"]",
+     "after": 600
+    },
+    {
+     "click": "#role-next",
+     "after": 500
+    },
+    {
+     "click": "#intro-open",
+     "after": 300
+    },
+    {
+     "caption": "Straight to this week"
+    },
+    {
+     "fit": true,
+     "after": 500
+    },
+    {
+     "focus": "#w2 .week-head",
+     "scale": 1.55,
+     "dx": 250,
+     "dy": 120,
+     "after": 900
+    },
+    {
+     "caption": "Check an item: saved for the whole team"
+    },
+    {
+     "focus": "[data-id=\"e2ed74687f\"]",
+     "scale": 1.75
+    },
+    {
+     "click": "[data-id=\"e2ed74687f\"] input[type=checkbox]",
+     "after": 500
+    },
+    {
+     "focus": "[data-id=\"e2ed74687f\"] .who",
+     "scale": 2.3,
+     "dx": -160,
+     "ms": 900,
+     "after": 1100
+    },
+    {
+     "caption": "A teammate checks something, everyone sees it"
+    },
+    {
+     "focus": "[data-id=\"ee5c23f238\"]",
+     "scale": 1.5,
+     "dy": -40
+    },
+    {
+     "tilt": [
+      4,
+      -7,
+      0
+     ],
+     "ms": 900
+    },
+    {
+     "notify": {
+      "initials": "ST",
+      "title": "Sam T. just checked an item",
+      "body": "Refresh the top of the backlog weekly ahead of refinement"
+     },
+     "wait": 700
+    },
+    {
+     "js": "window.__db.checks['Benefits']['ee5c23f238'] = {by:'sam.taylor@workday.com', at:'2026-11-04T09:41:00'}; document.dispatchEvent(new Event('visibilitychange'));",
+     "wait": 1000
+    },
+    {
+     "focus": "[data-id=\"ee5c23f238\"] .who",
+     "scale": 2.2,
+     "dx": -160,
+     "ms": 900,
+     "after": 1100
+    },
+    {
+     "notify": false,
+     "tilt": [
+      0,
+      0,
+      0
+     ],
+     "ms": 800
+    },
+    {
+     "caption": "Admins see every team at a glance"
+    },
+    {
+     "fit": true,
+     "ms": 700
+    },
+    {
+     "click": "#admin-btn",
+     "after": 600
+    },
+    {
+     "focus": ".adm-table",
+     "scale": 1.45,
+     "dx": 40,
+     "cy": 470,
+     "after": 1800
+    },
+    {
+     "click": "#adm-x",
+     "after": 300
+    },
+    {
+     "fit": true,
+     "ms": 700
+    }
+   ],
+   "bg": "sunrise"
+  },
+  {
+   "type": "phone",
+   "bg": "sunrise",
+   "wipe": true,
+   "laptop": "assets/shot_week.png",
+   "ready": "document.querySelector('#intro')",
+   "setup": [
+    "document.querySelector('[data-go=\"team\"]').click();",
+    "const s=document.querySelector('#team-select'); s.value='Benefits'; s.dispatchEvent(new Event('change',{bubbles:true}));",
+    "document.querySelector('#team-next').click();",
+    "document.querySelector('#role-pick [data-pick=\"pm\"]').click();",
+    "document.querySelector('#role-next').click();",
+    "document.querySelector('#intro-open').click();",
+    "document.dispatchEvent(new Event('visibilitychange'));"
+   ],
+   "scroll_to": "[data-id=\"e2ed74687f\"]",
+   "steps": [
+    {
+     "caption": "Same guide, every screen",
+     "wait": 1800
+    },
+    {
+     "caption": "Check it off from anywhere",
+     "wait": 900
+    },
+    {
+     "tap": "[data-id=\"e2ed74687f\"] input[type=checkbox]",
+     "wait": 2200
+    }
+   ]
+  },
+  {
+   "type": "inset",
+   "bg": "sunrise",
+   "text": "Every team's **progress** [img] in one place",
+   "image": {
+    "file": "assets/shot_admin.png",
+    "width": "3.4em",
+    "position": "50% 10%"
+   },
+   "size": 84,
+   "duration": 3800
+  },
+  {
+   "type": "inset",
+   "bg": "blue",
+   "text": "Built **in a day** [img] with Claude Code",
+   "image": {
+    "file": "assets/shot_week.png",
+    "width": "3.4em",
+    "position": "0 0"
+   },
+   "size": 84,
+   "duration": 3800
+  },
+  {
+   "type": "beats",
+   "words": [
+    "Shared.",
+    "Live.",
+    "No servers.",
+    "**The client owns it.**"
+   ],
+   "word_ms": 650,
+   "hold": 700
+  },
+  {
+   "type": "endcard",
+   "bg": "blue",
+   "wipe": true,
+   "title": "A consulting deliverable, turned into a **tool teams actually use.**",
+   "sub": "BT Operating Model · Implementation Guide",
+   "duration": 5200
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "metis-strategy/metis-legal-drafting",
+  "version": "0.2.3",
+  "scope": "firm",
+  "private": false,
+  "summary": "Draft Statements of Work (SOWs) from client templates and Metis proposals, and review/redline Master Services Agreements (MSAs) from the Supplier perspective. Triggers on SOW drafting, MSA review, contract redlining, scope creep analysis, deliverable tables, invoice schedules, IP carve-outs, or any mention of SOW, MSA, master agreement, statement of work, redline, or contract review in the context of Metis Strategy engagements.",
+  "skills": {
+    "metis-legal-drafting": {
+      "path": "SKILL.md",
+      "attachments": [
+        "references/firm-metadata.md",
+        "references/sow-patterns.md",
+        "references/msa-risk-checklist.md"
+      ]
+    }
+  }
+}

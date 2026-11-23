@@ -1,0 +1,11 @@
+{
+  "name": "metis-strategy/presentation-editor",
+  "version": "1.0.0",
+  "private": false,
+  "summary": "Front door for editing presentations and designs from short informal prompts. Three responsibilities: (1) Prompt Engineer, turning terse asks like 'add System Demo to the E2E view' or 'make this less crowded' into an explicit five-field change brief; (2) Editor, making the smallest correct change on whichever surface the artifact lives on (existing .pptx, PowerPoint add-in live deck, Claude Design and canvas tools, HTML artifacts, dashboards) or routing new-deck work to metis-pptx, metis-html-slides or metis-narrative-scroll; (3) Quality Controller, proving via before and after snapshots that the intended change landed and nothing else moved. Ships inventory.py and compare.py, which snapshot pptx and html decks and fail with a non-zero exit when any change falls outside the declared scope. Triggers on change, add, move, remove, reword, restyle, compress or clean up against something that already exists.",
+  "skills": {
+    "presentation-editor": {
+      "path": "SKILL.md"
+    }
+  }
+}
